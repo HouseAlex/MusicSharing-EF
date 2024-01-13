@@ -17,6 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUserService, UserService>();
 
+// Initializae Database.
 var dbConnection = builder.Configuration.GetConnectionString("MusicSharingDatabase");
 builder.Services.AddDbContext<MusicSharingContext>(options => options.UseSqlServer(dbConnection))
     .AddScoped<IMusicSharingContext, MusicSharingContext>();
