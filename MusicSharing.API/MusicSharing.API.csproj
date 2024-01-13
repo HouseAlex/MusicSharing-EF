@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MusicSharing.Business\MusicSharing.Business.csproj" />
+    <ProjectReference Include="..\MusicSharing.Contracts\MusicSharing.Contracts.csproj" />
     <ProjectReference Include="..\MusicSharing.Data\MusicSharing.Data.csproj" />
   </ItemGroup>
 
