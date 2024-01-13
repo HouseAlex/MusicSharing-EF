@@ -3,6 +3,8 @@ using MusicSharing.Buisness.Services.UserService;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add configurations.
+
 // Add services to the container.
 
 builder.Services.AddControllers();
