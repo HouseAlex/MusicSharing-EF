@@ -1,9 +1,13 @@
-using MusicSharing.Buisness.Services.Interfaces.IUserService;
-using MusicSharing.Buisness.Services.UserService;
+using Microsoft.EntityFrameworkCore;
+using MusicSharing.Buisness.Services.Interfaces;
+using MusicSharing.Buisness.Services;
+using MusicSharing.Data.Contexts;
+using MusicSharing.Data.Contexts.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add configurations.
+builder.Configuration.AddEnvironmentVariables().AddJsonFile("appsettings.json");
 
 // Add services to the container.
 
@@ -12,6 +16,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUserService, UserService>();
+
+// Initializae Database.
+var dbConnection = builder.Configuration.GetConnectionString("MusicSharingDatabase");
+builder.Services.AddDbContext<MusicSharingContext>(options => options.UseSqlServer(dbConnection))
+    .AddScoped<IMusicSharingContext, MusicSharingContext>();
 
 var app = builder.Build();
 
