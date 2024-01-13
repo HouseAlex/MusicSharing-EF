@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using MusicSharing.Buisness.Services.Interfaces.IUserService;
 
 namespace MusicSharing.Buisness.Services.UserService;
 
