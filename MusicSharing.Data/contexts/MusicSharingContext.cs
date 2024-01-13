@@ -8,8 +8,11 @@ using System.Threading.Tasks;
 namespace MusicSharing.Data.Contexts;
 
 /// <summary>
-/// 
+/// The music sharing database context.
 /// </summary>
 public class MusicSharingContext : DbContext
 {
+    public MusicSharingContext(DbContextOptions<MusicSharingContext> options) : base(options)
+    {
+    }
 }
