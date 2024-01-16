@@ -8,5 +8,6 @@ namespace MusicSharing.Buisness.Services.Interfaces;
 /// </summary>
 public interface IUserService
 {
+    Task<MusicSharing.API.Controllers.InstagramPostDto> getPostInformation(string postId);
     Task<UserDto> GetUser(int id);
 }
