@@ -26,7 +26,7 @@ public class UserController : ControllerBase
     /// Placeholder function to show the process.
     /// </summary>
     /// <returns>An emtpy task</returns>
-    [HttpGet("{Id}")]
+    [HttpGet("{id}")]
     public async Task<UserDto> GetUser(int id)
     {
         return await userService.GetUser(id);
