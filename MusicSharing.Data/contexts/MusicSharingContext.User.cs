@@ -16,6 +16,7 @@ public partial class MusicSharingContext : IMusicSharingContext
 {
     public async Task<User?> GetUser(int id)
     {
-        return await Users.FirstOrDefaultAsync(x => x.Id == id);
+        var test = await Users.FirstOrDefaultAsync(x => x.Id == id);
+        return test;
     }
 }
