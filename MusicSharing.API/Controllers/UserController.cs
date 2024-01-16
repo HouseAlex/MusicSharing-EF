@@ -31,4 +31,9 @@ public class UserController : ControllerBase
     {
         return await userService.GetUser(id);
     }
+
+    /// <summary>
+    /// Creation of new placeholder function.
+    /// </summary>
+    /// <returns>An emtpy task</returns>
 }
