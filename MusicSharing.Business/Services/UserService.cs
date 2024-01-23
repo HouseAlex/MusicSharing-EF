@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using MusicSharing.Buisness.Services.Interfaces;
 using MusicSharing.Contracts.Outputs;
@@ -11,14 +12,17 @@ namespace MusicSharing.Buisness.Services;
 public class UserService : IUserService
 {
     private readonly IMusicSharingContext context;
+    private readonly IMapper mapper;
 
     /// <summary>
     /// The instance of the user service.
     /// </summary>
     /// <param name="context">The music sharing context.</param>
-    public UserService(IMusicSharingContext context)
+    public UserService(IMusicSharingContext context,
+        IMapper mapper)
     {
         this.context = context;
+        this.mapper = mapper;
     }
 
     /// <summary>
@@ -34,12 +38,6 @@ public class UserService : IUserService
             throw new Exception();
         }
 
-        //TODO: temporary manual map until auto mapper is up and working.
-        return new UserDto
-        {
-            Id = user.Id,
-            Name = user.Name,
-            SpotifyAccount = user.SpotifyAccount
-        };
+        return mapper.Map<UserDto>(user);
     }
 }

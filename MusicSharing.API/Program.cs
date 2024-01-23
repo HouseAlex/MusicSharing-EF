@@ -5,6 +5,7 @@ using MusicSharing.Data.Contexts;
 using MusicSharing.Data.Contexts.Interfaces;
 using System.Net;
 using System.Text;
+using MusicSharing.Business.Extensions;
 
 //string GetAccessToken()
 //{
@@ -84,6 +85,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUserService, UserService>();
+
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 // Initializae Database.
 var dbConnection = builder.Configuration.GetConnectionString("MusicSharingDatabase");
