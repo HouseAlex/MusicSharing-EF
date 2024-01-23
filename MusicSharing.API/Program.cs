@@ -6,71 +6,71 @@ using MusicSharing.Data.Contexts.Interfaces;
 using System.Net;
 using System.Text;
 
-string GetAccessToken()
-{
-    // Create a new SpotifyToken object to store the access token
-    // SpotifyToken token = new SpotifyToken();
-    var SpotifyToken = "your_spotify_token";
+//string GetAccessToken()
+//{
+//    // Create a new SpotifyToken object to store the access token
+//    // SpotifyToken token = new SpotifyToken();
+//    var SpotifyToken = "your_spotify_token";
 
-    // Define the Spotify API endpoint for token retrieval
-    string tokenUrl = "https://accounts.spotify.com/api/token";
+//    // Define the Spotify API endpoint for token retrieval
+//    string tokenUrl = "https://accounts.spotify.com/api/token";
 
-    // Replace 'your_client_id' and 'your_client_secret' with your actual Spotify API credentials
-    var clientId = "your_client_id";
-    var clientSecret = "your_client_secret";
+//    // Replace 'your_client_id' and 'your_client_secret' with your actual Spotify API credentials
+//    var clientId = "your_client_id";
+//    var clientSecret = "your_client_secret";
 
-    // Encode the client ID and client secret for the Authorization header
-    var encodedClientCredentials = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{clientId}:{clientSecret}"));
+//    // Encode the client ID and client secret for the Authorization header
+//    var encodedClientCredentials = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{clientId}:{clientSecret}"));
 
-    // Create a HttpWebRequest to make a POST request to the Spotify API for token retrieval
-    HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(tokenUrl);
-    webRequest.Method = "POST";
-    webRequest.ContentType = "application/x-www-form-urlencoded";
-    webRequest.Accept = "application/json";
+//    // Create a HttpWebRequest to make a POST request to the Spotify API for token retrieval
+//    HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(tokenUrl);
+//    webRequest.Method = "POST";
+//    webRequest.ContentType = "application/x-www-form-urlencoded";
+//    webRequest.Accept = "application/json";
 
-    // Add Authorization header with the encoded client credentials
-    webRequest.Headers.Add($"Authorization: Basic {encodedClientCredentials}");
+//    // Add Authorization header with the encoded client credentials
+//    webRequest.Headers.Add($"Authorization: Basic {encodedClientCredentials}");
 
-    // Specify the grant type as 'client_credentials'
-    var requestBody = "grant_type=client_credentials";
-    byte[] requestBodyBytes = Encoding.ASCII.GetBytes(requestBody);
-    webRequest.ContentLength = requestBodyBytes.Length;
+//    // Specify the grant type as 'client_credentials'
+//    var requestBody = "grant_type=client_credentials";
+//    byte[] requestBodyBytes = Encoding.ASCII.GetBytes(requestBody);
+//    webRequest.ContentLength = requestBodyBytes.Length;
 
-    // Write the request body to the request stream
-    using (Stream requestStream = webRequest.GetRequestStream())
-    {
-        requestStream.Write(requestBodyBytes, 0, requestBodyBytes.Length);
-    }
+//    // Write the request body to the request stream
+//    using (Stream requestStream = webRequest.GetRequestStream())
+//    {
+//        requestStream.Write(requestBodyBytes, 0, requestBodyBytes.Length);
+//    }
 
-    // Get the response from the Spotify API
-    using (HttpWebResponse response = (HttpWebResponse)webRequest.GetResponse())
-    {
-        // Read the response stream
-        using (Stream responseStream = response.GetResponseStream())
-        {
-            using (StreamReader reader = new StreamReader(responseStream, Encoding.UTF8))
-            {
-                // Get the JSON response containing the access token
-                string jsonResponse = reader.ReadToEnd();
+//    // Get the response from the Spotify API
+//    using (HttpWebResponse response = (HttpWebResponse)webRequest.GetResponse())
+//    {
+//        // Read the response stream
+//        using (Stream responseStream = response.GetResponseStream())
+//        {
+//            using (StreamReader reader = new StreamReader(responseStream, Encoding.UTF8))
+//            {
+//                // Get the JSON response containing the access token
+//                string jsonResponse = reader.ReadToEnd();
 
-                // Parse the JSON and set the access token in the 'token' object
-                // token.access_token = ParseAccessTokenFromJson(jsonResponse);
-            }
-        }
-    }
-    object token = null;
-    // Return the access token
-    return token.access_token;
+//                // Parse the JSON and set the access token in the 'token' object
+//                // token.access_token = ParseAccessTokenFromJson(jsonResponse);
+//            }
+//        }
+//    }
+//    object token = null;
+//    // Return the access token
+//    return token.access_token;
 
-}
+//}
 
-// Helper method to parse the access token from the JSON response
-string ParseAccessTokenFromJson(string jsonResponse)
-{
-    // Later we can implement logic if we wanted to get a parsed token from the
-    // Spotify api.
-    return "your_parsed_access_token";
-}
+//// Helper method to parse the access token from the JSON response
+//string ParseAccessTokenFromJson(string jsonResponse)
+//{
+//    // Later we can implement logic if we wanted to get a parsed token from the
+//    // Spotify api.
+//    return "your_parsed_access_token";
+//}
 
 var builder = WebApplication.CreateBuilder(args);
 
