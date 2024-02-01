@@ -5,6 +5,14 @@ using MusicSharing.Data.Contexts;
 using MusicSharing.Data.Contexts.Interfaces;
 using System.Net;
 using System.Text;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 //string GetAccessToken()
 //{
@@ -71,7 +79,6 @@ using System.Text;
 //    // Spotify api.
 //    return "your_parsed_access_token";
 //}
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add configurations.
@@ -103,3 +110,21 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
+
+namespace ConsumeSpotifyWebAPI
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            CreateHostBuilder(args).Build().Run();
+        }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
+    }
+}

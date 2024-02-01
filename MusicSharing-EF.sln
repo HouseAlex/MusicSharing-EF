@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicSharing.Business", "Mu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicSharing.Data", "MusicSharing.Data\MusicSharing.Data.csproj", "{0FBCD834-27E1-4F4F-9CB6-E06C1D402B65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicSharing.Contracts", "MusicSharing.Contracts\MusicSharing.Contracts.csproj", "{E175D7B9-AC71-4683-ACC1-0C5621E8ABD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicSharing.Contracts", "MusicSharing.Contracts\MusicSharing.Contracts.csproj", "{E175D7B9-AC71-4683-ACC1-0C5621E8ABD4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{51B873D1-8E0B-4F48-B99D-046ECEA23E07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
