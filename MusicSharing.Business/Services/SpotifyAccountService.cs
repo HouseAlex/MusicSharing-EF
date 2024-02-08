@@ -13,11 +13,14 @@ namespace MusicSharing.Business.Services
     public class SpotifyAccountService : ISpotifyAccountService
     {
         private readonly HttpClient _httpClient;
+        private string _accessToken;
+
         public SpotifyAccountService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
-        public async Task<string> GetToken(string clientId, string clientSecret)
+
+        private async Task<string> GetToken(string clientId, string clientSecret)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, "token");
 

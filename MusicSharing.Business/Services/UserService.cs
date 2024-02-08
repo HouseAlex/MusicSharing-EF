@@ -1,10 +1,10 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using MusicSharing.Buisness.Services.Interfaces;
+using MusicSharing.Business.Services.Interfaces;
 using MusicSharing.Contracts.Outputs;
 using MusicSharing.Data.Contexts.Interfaces;
 
-namespace MusicSharing.Buisness.Services;
+namespace MusicSharing.Business.Services;
 
 /// <summary>
 /// The user service.
@@ -13,6 +13,7 @@ public class UserService : IUserService
 {
     private readonly IMusicSharingContext context;
     private readonly IMapper mapper;
+
 
     /// <summary>
     /// The instance of the user service.

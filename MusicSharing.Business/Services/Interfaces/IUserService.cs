@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MusicSharing.Contracts.Outputs;
 
-namespace MusicSharing.Buisness.Services.Interfaces;
+namespace MusicSharing.Business.Services.Interfaces;
 
 /// <summary>
 /// An interface for the user service.
