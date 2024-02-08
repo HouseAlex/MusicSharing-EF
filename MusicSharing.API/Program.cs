@@ -6,6 +6,7 @@ using System.Text;
 using MusicSharing.Business.Extensions;
 using MusicSharing.Business.Services;
 using MusicSharing.Business.Services.Interfaces;
+using MusicSharing.Business.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+// Spotify Api Setup
+builder.Services.Configure<SpotifyApiSettings>(builder.Configuration.GetSection("SpotifyApi"));
 
 builder.Services.AddHttpClient<ISpotifyAccountService, SpotifyAccountService>(c => 
 {

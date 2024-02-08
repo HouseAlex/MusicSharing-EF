@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MusicSharing.Buisness.Services.Interfaces;
+using MusicSharing.Business.Services.Interfaces;
 using MusicSharing.Contracts.Outputs;
 
 
