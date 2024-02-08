@@ -1,11 +1,11 @@
 using Microsoft.EntityFrameworkCore;
-using MusicSharing.Buisness.Services.Interfaces;
-using MusicSharing.Buisness.Services;
 using MusicSharing.Data.Contexts;
 using MusicSharing.Data.Contexts.Interfaces;
 using System.Net;
 using System.Text;
 using MusicSharing.Business.Extensions;
+using MusicSharing.Business.Services;
+using MusicSharing.Business.Services.Interfaces;
 
 //string GetAccessToken()
 //{
@@ -87,6 +87,17 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+builder.Services.AddHttpClient<ISpotifyAccountService, SpotifyAccountService>(c => 
+{
+    c.BaseAddress = new Uri("https://accounts.spotify.com/api");
+});
+
+//builder.Services.AddHttpClient<ISpotifyService, SpotifyService>(c =>
+//{
+//    c.BaseAddress = new Uri("https://api.spotify.com/v1");
+//    c.DefaultRequestHeaders.Add("Accept", "application/.json");
+//});
 
 // Initializae Database.
 var dbConnection = builder.Configuration.GetConnectionString("MusicSharingDatabase");
