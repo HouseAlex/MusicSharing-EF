@@ -2,7 +2,7 @@ using MusicSharing.Business.Services.Interfaces;
 
 namespace MusicSharing.Business.Services;
 
-public class SpotifyService
+public class SpotifyService : ISpotifyService
 {
     private readonly HttpClient _httpClient;
     private readonly ISpotifyAccountService spotifyAccountService;

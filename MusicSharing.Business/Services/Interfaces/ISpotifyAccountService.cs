@@ -8,6 +8,6 @@ namespace MusicSharing.Business.Services.Interfaces
 {
     public interface ISpotifyAccountService
     {
-        Task<string> GetToken(string clientId, string clientSecret);
+        Task<string> GetToken();
     }
 }
