@@ -10,4 +10,6 @@ public interface IUserService
 {
     //Task<MusicSharing.API.Controllers.InstagramPostDto> getPostInformation(string postId);
     Task<UserDto> GetUser(int id);
+
+    Task Test();
 }
