@@ -8,6 +8,7 @@ using MusicSharing.Business.Services;
 using MusicSharing.Business.Services.Interfaces;
 using MusicSharing.Business.Settings;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add configurations.
@@ -24,16 +25,27 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 // Spotify Api Setup
-builder.Services.Configure<SpotifyApiSettings>(builder.Configuration.GetSection("SpotifyApi"));
+//var obj = builder.Configuration.Ge("SpotifyApi");
+
+IConfiguration config = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .Build();
+
+IConfigurationSection section = config.GetSection("SpotifyAPI");
+
+string client_id = section["ClientId"];
+string client_secret = section["ClientSecret"];
+
+builder.Services.Configure<SpotifyApiSettings>(section);
 
 builder.Services.AddHttpClient<ISpotifyAccountService, SpotifyAccountService>(c => 
 {
-    c.BaseAddress = new Uri("https://accounts.spotify.com/api");
+    c.BaseAddress = new Uri("https://accounts.spotify.com/api/");
 });
 
 builder.Services.AddHttpClient<ISpotifyService, SpotifyService>(c =>
 {
-    c.BaseAddress = new Uri("https://api.spotify.com/v1");
+    c.BaseAddress = new Uri("https://api.spotify.com/v1/");
     c.DefaultRequestHeaders.Add("Accept", "application/.json");
 });
 

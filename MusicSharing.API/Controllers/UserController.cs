@@ -33,55 +33,50 @@ public class UserController : ControllerBase
         return await userService.GetUser(id);
     }
 
+    [HttpGet("TestSpotify")]
+    public async Task Test()
+    {
+        await userService.Test();
+    }
+
 }
 
-    /// <summary>
-    /// This class creates the relationship between the InstagramDto and our
-    /// instagram services.
-    /// </summary>
-    public class InstagramDto : instagramService
+
+// PostDto.cs
+/// <summary>
+/// This class represents a data transfer object (DTO) for a post.
+/// </summary>
+public class PostDto
+{
+    public string user { get; set; }
+}
+
+// IPostService.cs
+/// <summary>
+/// This interface defines the contract for the post service.
+/// </summary>
+public interface IPostService
+{
+    Task<PostDto> GetPost(string postId);
+
+    Task<PostDto> GetPostInformation(string postId);
+}
+
+// PostService.cs
+/// <summary>
+/// This class implements the post service and provides methods for obtaining post information.
+/// </summary>
+public class PostService : IPostService
+{
+    public async Task<PostDto> GetPost(string postId)
     {
-        private readonly InstagramService instagramService;
-        public InstagramDto(InstagramService instagramService)
-        {
-            this.instagramService = instagramService;
-        }
+        return await GetPostInformation(postId);
     }
 
-    /// <summary>
-    /// This interface provides a contract for the class to the implement.
-    /// </summary>
-    public interface InstagramService
+    public async Task<PostDto> GetPostInformation(string postId)
     {
-        Task<InstagramDto> getPostInformation(string postId);
+        throw new NotImplementedException();
     }
+}
 
-    /// <summary>
-    /// This class allows us to get the Instagram post information
-    /// and append a unique id to the post information in order to identify it.
-    /// </summary>
-    /// <returns>A unique post information id string</returns>
 
-    public class instagramService
-        {
-
-        /// <summary>
-        /// This function allows us a way to organize data of instagram posts
-        /// that are shared throughout the app.
-        /// </summary>
-        /// <returns>A unique post information id string</returns>
-        public async Task<InstagramDto> GetInstagramPost(string postId)
-            {
-                return await instagramService.getPostInformation(postId);
-            }
-
-        /// <summary>
-        /// This function allows us a way to actually obtain the post information
-        /// from Instagram.
-        /// </summary>
-        /// <returns>An emtpy task</returns>
-        internal static Task<InstagramDto> getPostInformation(string postId)
-            {
-                throw new NotImplementedException();
-            }
-        }

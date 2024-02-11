@@ -12,4 +12,12 @@ public class SpotifyService : ISpotifyService
         _httpClient = httpClient;
         this.spotifyAccountService = spotifyAccountService;
     }
+
+    public async Task Test()
+    {
+        var token = await spotifyAccountService.GetToken() ?? throw new Exception();
+        _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+        var response = await _httpClient.GetAsync("search?type=artist&q=Drake");
+    }
 }

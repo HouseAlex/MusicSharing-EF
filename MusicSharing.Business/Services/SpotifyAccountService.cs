@@ -33,8 +33,8 @@ namespace MusicSharing.Business.Services
         {
             var request = new HttpRequestMessage(HttpMethod.Post, "token");
 
-            request.Headers.Authorization = new AuthenticationHeaderValue(
-                "Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{settings.ClientId}: {settings.ClientSecret}")));
+            var test = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{settings.ClientId}:{settings.ClientSecret}"));
+            request.Headers.Add("Authorization", $"Basic {test}");
 
             request.Content = new FormUrlEncodedContent(new Dictionary<string, string>
             {

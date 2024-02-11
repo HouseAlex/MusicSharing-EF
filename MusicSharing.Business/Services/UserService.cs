@@ -13,17 +13,19 @@ public class UserService : IUserService
 {
     private readonly IMusicSharingContext context;
     private readonly IMapper mapper;
-
+    private readonly ISpotifyService spotifyService;
 
     /// <summary>
     /// The instance of the user service.
     /// </summary>
     /// <param name="context">The music sharing context.</param>
     public UserService(IMusicSharingContext context,
-        IMapper mapper)
+        IMapper mapper,
+        ISpotifyService spotifyService)
     {
         this.context = context;
         this.mapper = mapper;
+        this.spotifyService = spotifyService;
     }
 
     /// <summary>
@@ -40,5 +42,13 @@ public class UserService : IUserService
         }
 
         return mapper.Map<UserDto>(user);
+    }
+
+    /// <summary>
+    /// Test method.
+    /// </summary>
+    public async Task Test()
+    {
+        await spotifyService.Test();
     }
 }

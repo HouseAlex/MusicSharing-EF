@@ -5,8 +5,8 @@
     /// </summary>
     public class SpotifyApiSettings
     {
-        public string ClientId = default!;
+        public string ClientId { get; set; } = default!;
 
-        public string ClientSecret = default!;
+        public string ClientSecret { get; set; } = default!;
     }
 }
