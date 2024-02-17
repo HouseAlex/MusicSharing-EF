@@ -39,9 +39,15 @@ public class UserController : ControllerBase
         await userService.Test();
     }
 
+    [HttpPost("info/save")]
+    public async Task FrontEndTest()
+    {
+        await userService.Test();
+    }
+
 }
 
-
+/*
 // PostDto.cs
 /// <summary>
 /// This class represents a data transfer object (DTO) for a post.
@@ -79,4 +85,4 @@ public class PostService : IPostService
     }
 }
 
-
+*/
