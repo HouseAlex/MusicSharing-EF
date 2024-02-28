@@ -12,5 +12,9 @@ namespace MusicSharing.Data.Contexts.Interfaces;
 /// </summary>
 public partial interface IMusicSharingContext
 {
+    Task AddUser(User user);
+
     Task<User?> GetUser(int id);
+
+    Task<User?> GetUserFromSpotifyId(string spotifyId);
 }
