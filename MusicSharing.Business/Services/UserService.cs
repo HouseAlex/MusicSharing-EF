@@ -1,8 +1,10 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using MusicSharing.Business.Services.Interfaces;
+using MusicSharing.Contracts.Inputs;
 using MusicSharing.Contracts.Outputs;
 using MusicSharing.Data.Contexts.Interfaces;
+using MusicSharing.Data.Entities;
 
 namespace MusicSharing.Business.Services;
 
@@ -29,6 +31,18 @@ public class UserService : IUserService
     }
 
     /// <summary>
+    /// Checks to see if the spotify account exits in our system.
+    /// </summary>
+    /// <param name="spotifyId">The spotify user identifier.</param>
+    /// <returns>A boolean indicating whethere the user exists.</returns>
+    public async Task<bool> CheckUserExists(string spotifyId)
+    {
+        var user = await context.GetUserFromSpotifyId(spotifyId);
+        
+        return user != null;
+    }
+
+    /// <summary>
     /// Gets the user for the identifier.
     /// </summary>
     /// <param name="id">The identifier.</param>
@@ -42,6 +56,17 @@ public class UserService : IUserService
         }
 
         return mapper.Map<UserDto>(user);
+    }
+
+    /// <summary>
+    /// Registers a new user for our system.
+    /// </summary>
+    /// <param name="payload">A payload of the new user user's information.</param>
+    /// <returns>An empty task.</returns>
+    public async Task AddUser(NewUserPayload payload)
+    {
+        var newUser = User.Create(payload.Name, payload.SpotifyAccount, payload.SpotifyId);
+        await context.AddUser(newUser);
     }
 
     /// <summary>

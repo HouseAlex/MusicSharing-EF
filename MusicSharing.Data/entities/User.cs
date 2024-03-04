@@ -25,12 +25,17 @@ public class User
     /// <summary>
     /// The name.
     /// </summary>
-    public string Name { get; private set; } = default!;
+    public string? Name { get; private set; }
 
     /// <summary>
     /// The spotify account.
     /// </summary>
     public string SpotifyAccount { get; private set; } = default!;
+
+    /// <summary>
+    /// The spotify user identifier.
+    /// </summary>
+    public string SpotifyId { get; private set; } = default!;
 
     private User() { }
 
@@ -41,8 +46,9 @@ public class User
     /// <param name="spotifyAccount">The spotify account name.</param>
     /// <returns>The created user.</returns>
     public static User Create(
-        string name,
-        string spotifyAccount)
+        string? name,
+        string spotifyAccount,
+        string spotifyId)
     {
         // can add validation here.
 
@@ -50,7 +56,8 @@ public class User
         {
             IsActive = true,
             Name = name,
-            SpotifyAccount = spotifyAccount
+            SpotifyAccount = spotifyAccount,
+            SpotifyId = spotifyId
         };
     }
 
@@ -59,7 +66,7 @@ public class User
     /// </summary>
     /// <param name="name">The user's name.</param>
     public void Update(
-        string name)
+        string? name)
     {
         Name = name;
     }

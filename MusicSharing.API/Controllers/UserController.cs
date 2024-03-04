@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MusicSharing.Business.Services.Interfaces;
+using MusicSharing.Contracts.Inputs;
 using MusicSharing.Contracts.Outputs;
 
 
@@ -22,6 +23,33 @@ public class UserController : ControllerBase
     {
         this.userService = userService;
     }
+
+    /// <summary>
+    /// Checks to see if the spotify account exits in our system.
+    /// </summary>
+    /// <param name="spotifyId">The spotify user identifier.</param>
+    /// <returns>A boolean indicating whethere the user exists.</returns>
+    public async Task<bool> CheckUserExists(string spotifyId)
+    {
+        return await userService.CheckUserExists(spotifyId);
+    }
+
+    /// <summary>
+    /// Register a user if they are logining in for the first time
+    /// </summary>
+    /// <param name="payload">The new ueser information.</param>
+    /// <returns>An empty task.</returns>
+    public async Task RegisterUser([FromBody] NewUserPayload payload)
+    {
+        // Doesn't return anything right now, can if needed.
+        await userService.AddUser(payload);
+    }
+
+
+
+    /*
+    Test Endpoints Below
+    */
 
     /// <summary>
     /// Placeholder function to show the process.

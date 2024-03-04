@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using MusicSharing.Contracts.Inputs;
 using MusicSharing.Contracts.Outputs;
 
 namespace MusicSharing.Business.Services.Interfaces;
@@ -8,8 +9,12 @@ namespace MusicSharing.Business.Services.Interfaces;
 /// </summary>
 public interface IUserService
 {
+    Task<bool> CheckUserExists(string spotifyId);
+
     //Task<MusicSharing.API.Controllers.InstagramPostDto> getPostInformation(string postId);
     Task<UserDto> GetUser(int id);
+
+    Task AddUser(NewUserPayload payload);
 
     Task Test();
 }
