@@ -34,7 +34,11 @@ public class UserController : ControllerBase
         return await userService.CheckUserExists(spotifyId);
     }
 
-    
+    /// <summary>
+    /// Register a user if they are logining in for the first time
+    /// </summary>
+    /// <param name="payload">The new ueser information.</param>
+    /// <returns>An empty task.</returns>
     public async Task RegisterUser([FromBody] NewUserPayload payload)
     {
         // Doesn't return anything right now, can if needed.
