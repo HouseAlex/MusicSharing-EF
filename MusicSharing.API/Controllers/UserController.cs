@@ -71,26 +71,7 @@ public class UserController : ControllerBase
 
 }
 
-/*
-// PostDto.cs
-/// <summary>
-/// This class represents a data transfer object (DTO) for a post.
-/// </summary>
-public class PostDto
-{
-    public string user { get; set; }
-}
 
-// IPostService.cs
-/// <summary>
-/// This interface defines the contract for the post service.
-/// </summary>
-public interface IPostService
-{
-    Task<PostDto> GetPost(string postId);
-
-    Task<PostDto> GetPostInformation(string postId);
-}
 
 // PostService.cs
 /// <summary>
@@ -109,4 +90,3 @@ public class PostService : IPostService
     }
 }
 
-*/
