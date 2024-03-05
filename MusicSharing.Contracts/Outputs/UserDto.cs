@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,5 +26,10 @@ namespace MusicSharing.Contracts.Outputs
         /// The spotify account.
         /// </summary>
         public string SpotifyAccount { get; set; } = default!;
+
+        /// <summary>
+        /// The music sharing app post title.
+        /// </summary>
+        public string PostTitle { get; set; }
     }
 }

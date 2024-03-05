@@ -12,4 +12,6 @@ public interface IUserService
     Task<UserDto> GetUser(int id);
 
     Task Test();
+
+    Task<IEnumerable<string>> GetPostTitles();
 }

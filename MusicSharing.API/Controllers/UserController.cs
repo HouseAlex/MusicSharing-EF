@@ -45,24 +45,17 @@ public class UserController : ControllerBase
         await userService.Test();
     }
 
-}
-
-
-
-// PostService.cs
-/// <summary>
-/// This class implements the post service and provides methods for obtaining post information.
-/// </summary>
-public class PostService : IPostService
-{
-    public async Task<PostDto> GetPost(string postId)
+    [HttpGet("post/titles")]
+    public async Task<ActionResult<IEnumerable<string>>> GetPostTitles()
     {
-        return await GetPostInformation(postId);
+        var postTitles = await userService.GetPostTitles();
+        if (postTitles == null)
+        {
+            return NotFound();
+        }
+        return Ok(postTitles);
     }
 
-    public async Task<PostDto> GetPostInformation(string postId)
-    {
-        throw new NotImplementedException();
-    }
+
 }
 
