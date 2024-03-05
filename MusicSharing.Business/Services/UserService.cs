@@ -76,4 +76,17 @@ public class UserService : IUserService
     {
         await spotifyService.Test();
     }
+
+    public UserService(IMusicSharingContext context)
+    {
+        this.context = context;
+    }
+
+    public async Task<IEnumerable<string>> GetPostTitles()
+    {
+        var postTitles = await context.Posts
+            .Select(p => p.Title)
+            .ToListAsync();
+        return postTitles;
+    }
 }
