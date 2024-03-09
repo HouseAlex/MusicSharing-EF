@@ -4,7 +4,6 @@ using MusicSharing.Data.contexts.Interfaces;
 
 namespace MusicSharing.Business.Services
 {
-    // PostService.cs
     /// <summary>
     /// This class implements the post   service and provides methods for obtaining post information.
     /// </summary>
