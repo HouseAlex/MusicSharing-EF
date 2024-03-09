@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MusicSharing.Business.Services;
+using MusicSharing.Business.Services.Interfaces;
 
 namespace MusicSharing.API.Controllers;
 
@@ -7,6 +9,23 @@ namespace MusicSharing.API.Controllers;
 /// </summary>
 [ApiController]
 [Route("[controller]")]
-public class PostController
+public class PostController : ControllerBase
 {
+    private readonly IPostService postService;
+
+    public PostController(IPostService postService)
+    {
+        this.postService = postService;
+    }
+
+    [HttpGet("titles")]
+    public async Task<ActionResult<IEnumerable<string>>> GetPostTitles()
+    {
+        var postTitles = await postService.GetPostTitles();
+        if (postTitles == null)
+        {
+            return NotFound();
+        }
+        return Ok(postTitles);
+    }
 }
