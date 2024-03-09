@@ -17,6 +17,4 @@ public interface IUserService
     Task AddUser(NewUserPayload payload);
 
     Task Test();
-
-    Task<IEnumerable<string>> GetPostTitles();
 }

@@ -12,5 +12,7 @@ namespace MusicSharing.Business.Services.Interfaces
         Task<PostDto> GetPost(string postId);
 
         Task<PostDto> GetPostInformation(string postId);
+
+        Task<IEnumerable<string>> GetPostTitles();
     }
 }

@@ -36,6 +36,11 @@ namespace MusicSharing.Data.entities
         public int PostTypeId {  get; private set; }    // Not sure if we will need this, depends on things the can be posted
 
         /// <summary>
+        /// The post title
+        /// </summary>
+        public string Title { get; private set; }
+
+        /// <summary>
         /// The user identifer of the post creator
         /// </summary>
         public int UserId { get; private set; }

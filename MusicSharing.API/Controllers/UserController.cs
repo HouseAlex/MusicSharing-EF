@@ -29,6 +29,7 @@ public class UserController : ControllerBase
     /// </summary>
     /// <param name="spotifyId">The spotify user identifier.</param>
     /// <returns>A boolean indicating whethere the user exists.</returns>
+    [HttpGet("exists")]
     public async Task<bool> CheckUserExists(string spotifyId)
     {
         return await userService.CheckUserExists(spotifyId);
@@ -39,6 +40,7 @@ public class UserController : ControllerBase
     /// </summary>
     /// <param name="payload">The new ueser information.</param>
     /// <returns>An empty task.</returns>
+    [HttpPost("register")]
     public async Task RegisterUser([FromBody] NewUserPayload payload)
     {
         // Doesn't return anything right now, can if needed.
@@ -72,18 +74,5 @@ public class UserController : ControllerBase
     {
         await userService.Test();
     }
-
-    [HttpGet("post/titles")]
-    public async Task<ActionResult<IEnumerable<string>>> GetPostTitles()
-    {
-        var postTitles = await userService.GetPostTitles();
-        if (postTitles == null)
-        {
-            return NotFound();
-        }
-        return Ok(postTitles);
-    }
-
-
 }
 

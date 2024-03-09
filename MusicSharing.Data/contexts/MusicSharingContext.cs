@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MusicSharing.Data.Contexts.Interfaces;
+using MusicSharing.Data.entities;
 using MusicSharing.Data.Entities;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,10 @@ namespace MusicSharing.Data.Contexts;
 /// </summary>
 public partial class MusicSharingContext : DbContext, IMusicSharingContext
 {
+    public DbSet<Post> Posts { get; set; } = default!;
+
     public DbSet<User> Users { get; set; } = default!;
+
 
     /// <summary>
     /// The instance of the music sharing database context.

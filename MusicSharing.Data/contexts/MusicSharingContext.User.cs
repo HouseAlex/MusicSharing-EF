@@ -41,4 +41,12 @@ public partial class MusicSharingContext : IMusicSharingContext
     {
         return await Users.FirstOrDefaultAsync(x => x.SpotifyId == spotifyId);
     }
+
+    //tmporary - move to post partial context
+    public async Task<IEnumerable<string>> GetPostTitles()
+    {
+        return await Posts
+                .Select(p => p.Title)
+                .ToListAsync();
+    }
 }
