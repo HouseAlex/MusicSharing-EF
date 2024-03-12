@@ -25,11 +25,6 @@ namespace MusicSharing.Contracts.Outputs
         /// <summary>
         /// The spotify account.
         /// </summary>
-        public string SpotifyAccount { get; set; } = default!;
-
-        /// <summary>
-        /// The music sharing app post title.
-        /// </summary>
-        public string PostTitle { get; set; }
+        public string SpotifyId { get; set; } = default!;
     }
 }

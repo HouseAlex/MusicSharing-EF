@@ -14,12 +14,7 @@ namespace MusicSharing.Contracts.Inputs
         /// <summary>
         /// The user's name
         /// </summary>
-        public string? Name { get; }
-
-        /// <summary>
-        /// The spotiy account.
-        /// </summary>
-        public string SpotifyAccount { get; } = default!;
+        public string DisplayName { get; } = default!;
 
         /// <summary>
         /// The spotify user identifier.

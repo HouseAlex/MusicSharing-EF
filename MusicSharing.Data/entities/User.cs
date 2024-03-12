@@ -25,12 +25,7 @@ public class User
     /// <summary>
     /// The name.
     /// </summary>
-    public string? Name { get; private set; }
-
-    /// <summary>
-    /// The spotify account.
-    /// </summary>
-    public string SpotifyAccount { get; private set; } = default!;
+    public string Name { get; private set; } = default!;
 
     /// <summary>
     /// The spotify user identifier.
@@ -43,11 +38,9 @@ public class User
     /// Creates a new user entity.
     /// </summary>
     /// <param name="name">The user's name.</param>
-    /// <param name="spotifyAccount">The spotify account name.</param>
     /// <returns>The created user.</returns>
     public static User Create(
-        string? name,
-        string spotifyAccount,
+        string name,
         string spotifyId)
     {
         // can add validation here.
@@ -56,7 +49,6 @@ public class User
         {
             IsActive = true,
             Name = name,
-            SpotifyAccount = spotifyAccount,
             SpotifyId = spotifyId
         };
     }
@@ -66,7 +58,7 @@ public class User
     /// </summary>
     /// <param name="name">The user's name.</param>
     public void Update(
-        string? name)
+        string name)
     {
         Name = name;
     }

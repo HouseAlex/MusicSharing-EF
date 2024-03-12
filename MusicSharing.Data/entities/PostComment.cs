@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MusicSharing.Data.Entities;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MusicSharing.Data.entities
 {
@@ -40,5 +36,54 @@ namespace MusicSharing.Data.entities
         /// The user identifier of the commenter.
         /// </summary>
         public int UserId { get; private set; }
+
+        /// <summary>
+        /// The user.
+        /// </summary>
+        [ForeignKey("UserId")]
+        public virtual User? User { get; private set; }
+
+        private PostComment() { }
+
+        /// <summary>
+        /// Creates a new instance of postcomment.
+        /// </summary>
+        /// <param name="comment">The comment.</param>
+        /// <param name="postId">The post identifier.</param>
+        /// <param name="userId">The user identifier.</param>
+        /// <returns>The postcomment object.</returns>
+        public static PostComment Create(string comment, int postId, int userId)
+        {
+            return new PostComment
+            {
+                Comment = comment,
+                CreatedOn = DateTime.Now,
+                IsActive = true,
+                PostId = postId,
+                UserId = userId
+            };
+        }
+
+        /// <summary>
+        /// Updates the comment.
+        /// </summary>
+        /// <param name="comment">The comment.</param>
+        public void Update(string comment)
+        {
+            if (string.IsNullOrEmpty(comment))
+            {
+                throw new ArgumentNullException(nameof(comment));
+            }
+
+            this.Comment = comment;
+        }
+
+        /// <summary>
+        /// Deletes the instance.
+        /// </summary>
+        public void Delete()
+        {
+            IsActive = false;
+        }
     }
 }

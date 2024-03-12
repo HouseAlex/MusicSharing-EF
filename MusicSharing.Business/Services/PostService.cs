@@ -1,6 +1,6 @@
 ﻿using MusicSharing.Business.Services.Interfaces;
 using MusicSharing.Contracts.Outputs;
-using MusicSharing.Data.contexts.Interfaces;
+using MusicSharing.Data.Contexts.Interfaces;
 
 namespace MusicSharing.Business.Services
 {

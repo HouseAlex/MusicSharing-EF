@@ -16,7 +16,13 @@ namespace MusicSharing.Data.Contexts;
 /// </summary>
 public partial class MusicSharingContext : DbContext, IMusicSharingContext
 {
+    public DbSet<Follow> Follows { get; set; } = default!;
+
     public DbSet<Post> Posts { get; set; } = default!;
+
+    public DbSet<PostComment> PostComments { get; set; } = default!;
+
+    public DbSet<PostLike> PostLikes { get; set; } = default!;
 
     public DbSet<User> Users { get; set; } = default!;
 
