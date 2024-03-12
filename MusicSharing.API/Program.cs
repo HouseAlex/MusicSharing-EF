@@ -54,6 +54,8 @@ var dbConnection = builder.Configuration.GetConnectionString("MusicSharingDataba
 builder.Services.AddDbContext<MusicSharingContext>(options => options.UseSqlServer(dbConnection))
     .AddScoped<IMusicSharingContext, MusicSharingContext>();
 
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
