@@ -34,5 +34,29 @@ namespace MusicSharing.Data.entities
         public int UserId { get; private set; }
 
         private PostLike() { }
+
+        /// <summary>
+        /// Creates a new instance of postlike.
+        /// </summary>
+        /// <param name="postId">The post identifier.</param>
+        /// <param name="userId">The user identifier.</param>
+        /// <returns>The postlike object.</returns>
+        public static PostLike Create(int postId, int userId)
+        {
+            return new PostLike 
+            { 
+                IsActive = true,
+                PostId = postId, 
+                UserId = userId 
+            };
+        }
+
+        /// <summary>
+        /// Deletes the postlike object.
+        /// </summary>
+        public void Delete()
+        {
+            this.IsActive = false;
+        }
     }
 }

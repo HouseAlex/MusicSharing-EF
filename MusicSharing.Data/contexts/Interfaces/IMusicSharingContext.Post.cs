@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MusicSharing.Data.contexts.Interfaces
+namespace MusicSharing.Data.Contexts.Interfaces
 {
     public partial interface IMusicSharingContext
     {

@@ -29,7 +29,7 @@ public class UserController : ControllerBase
     /// </summary>
     /// <param name="spotifyId">The spotify user identifier.</param>
     /// <returns>A boolean indicating whethere the user exists.</returns>
-    [HttpGet("exists")]
+    [HttpGet("{spotifyId}/exists")]
     public async Task<bool> CheckUserExists(string spotifyId)
     {
         return await userService.CheckUserExists(spotifyId);

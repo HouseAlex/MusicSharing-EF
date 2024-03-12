@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MusicSharing.Data.Contexts.Interfaces;
 using MusicSharing.Data.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MusicSharing.Data.Contexts;
 
@@ -26,9 +21,14 @@ public partial class MusicSharingContext : IMusicSharingContext
         await SaveChangesAsync();
     }
 
+    /// <summary>
+    /// Gets the user from the user identifier.
+    /// </summary>
+    /// <param name="id">The user identifier.</param>
+    /// <returns>The user.</returns>
     public async Task<User?> GetUser(int id)
     {
-        var test = await Users.FirstOrDefaultAsync(x => x.Id == id);
+        var test = await Users.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
         return test;
     }
 
@@ -40,13 +40,5 @@ public partial class MusicSharingContext : IMusicSharingContext
     public async Task<User?> GetUserFromSpotifyId(string spotifyId)
     {
         return await Users.FirstOrDefaultAsync(x => x.SpotifyId == spotifyId);
-    }
-
-    //tmporary - move to post partial context
-    public async Task<IEnumerable<string>> GetPostTitles()
-    {
-        return await Posts
-                .Select(p => p.Title)
-                .ToListAsync();
     }
 }

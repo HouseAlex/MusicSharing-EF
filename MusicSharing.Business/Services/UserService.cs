@@ -65,7 +65,7 @@ public class UserService : IUserService
     /// <returns>An empty task.</returns>
     public async Task AddUser(NewUserPayload payload)
     {
-        var newUser = User.Create(payload.Name, payload.SpotifyAccount, payload.SpotifyId);
+        var newUser = User.Create(payload.DisplayName, payload.SpotifyId);
         await context.AddUser(newUser);
     }
 

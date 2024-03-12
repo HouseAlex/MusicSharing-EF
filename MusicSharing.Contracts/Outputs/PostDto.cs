@@ -11,6 +11,6 @@ namespace MusicSharing.Contracts.Outputs
     /// </summary>
     public class PostDto
     {
-        public string user { get; set; }
+        public string user { get; set; } = default!;
     }
 }
