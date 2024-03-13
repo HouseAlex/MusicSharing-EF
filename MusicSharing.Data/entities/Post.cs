@@ -36,6 +36,11 @@ namespace MusicSharing.Data.entities
         /// </summary>
         public bool IsActive { get; private set; }
 
+        public void SetInactive()
+        {
+            IsActive = false;
+        }
+
         /*
         /// <summary>
         /// The post type identifier

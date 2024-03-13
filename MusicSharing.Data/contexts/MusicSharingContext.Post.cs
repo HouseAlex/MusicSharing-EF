@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MusicSharing.Data.Contexts.Interfaces;
+using MusicSharing.Data.entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,5 +20,27 @@ public partial class MusicSharingContext : IMusicSharingContext
         return await Posts
                 .Select(p => p.Title)
                 .ToListAsync();
+    }
+
+    /// <summary>
+    /// Allows the ability to add more post titles.
+    /// </summary>
+    public async Task AddPost(Post post)
+    {
+        await Posts.AddAsync(post);
+        await SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Allows the ability to remove post titles.
+    /// </summary>
+    public async Task RemovePost(int postId)
+    {
+        var postToRemove = await Posts.FindAsync(postId);
+        if(postToRemove != null)
+        {
+            postToRemove.SetInactive();
+            await SaveChangesAsync();
+        }
     }
 }
