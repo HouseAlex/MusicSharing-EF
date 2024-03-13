@@ -34,16 +34,10 @@ public partial class MusicSharingContext : IMusicSharingContext
     /// <summary>
     /// Allows the ability to remove post titles.
     /// </summary>
-    public async Task<Post?> GetPost(int postId, bool removePost = false)
+    public async Task<Post?> GetPost(int postId, bool withTracking)
     {
-        var post = await Posts.FindAsync(postId);
-
-        if(post != null && removePost)
-        {
-            post.Delete();
-            await SaveChangesAsync();
-        }
-        return post;
-
+        return withTracking ? await Posts.FirstOrDefaultAsync(x => x.Id == postId) : await Posts.AsNoTracking().FirstOrDefaultAsync(x => x.Id == postId);
     }
+
 }
+
