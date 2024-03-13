@@ -11,7 +11,7 @@ namespace MusicSharing.Data.Contexts.Interfaces
     {
         Task<IEnumerable<string>> GetPostTitles();
         Task AddPost(Post post);
-        Task RemovePost(int postId);
+        Task<Post?> GetPost(int postId);
 
     }
 }
