@@ -51,6 +51,11 @@ namespace MusicSharing.Data.entities
         public string SpotifyId { get; private set; } = default!;
 
         /// <summary>
+        /// The spotify redirect url for the post.
+        /// </summary>
+        public string SpotifyUrl { get; private set; } = default!;
+
+        /// <summary>
         /// The post title
         /// </summary>
         public string Title { get; private set; } = default!;

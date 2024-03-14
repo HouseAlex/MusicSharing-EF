@@ -61,11 +61,11 @@ public class UserService : IUserService
     /// <summary>
     /// Gets the user from the spotify identifier.
     /// </summary>
-    /// <param name="spotifyId">The spotify identifier.</param>
+    /// <param name="userId">The user identifier.</param>
     /// <returns>The user.</returns>
-    public async Task<UserDto> GetUserFromSpotifyId(string spotifyId)
+    public async Task<UserDto> GetUserFromSpotifyId(int userId)
     {
-        var user = await context.GetUserFromSpotifyId(spotifyId, false);
+        var user = await context.GetUserFromSpotifyId(userId, false);
 
         if (user == null)
         {

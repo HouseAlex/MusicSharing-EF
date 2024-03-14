@@ -13,11 +13,13 @@ namespace MusicSharing.Contracts.Outputs
     {
         public IEnumerable<CommentDto>? Comments { get; set; }
 
-        public DateTime CreateOn { get; set; }
+        public DateTime CreatedOn { get; set; }
 
         public string ImageUrl { get; set; } = default!;
 
         public string SpotifyId { get; set; } = default!;
+
+        public string SpotifyUrl { get; set; } = default!;
 
         public string Title { get; set; } = default!;
 

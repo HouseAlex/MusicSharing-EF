@@ -22,12 +22,12 @@ public class PostController : ControllerBase
     /// <summary>
     /// Asynchronously gets the post feed for the user.
     /// </summary>
-    /// <param name="spotifyId">The user's spotify identifier.</param>
+    /// <param name="userId">The user identifier.</param>
     /// <returns>A list of posts</returns>
-    [HttpGet("feed/user/{spotifyId}")]
-    public async Task<IEnumerable<PostDto>> GetPostFeed(string spotifyId)
+    [HttpGet("feed/user/{userId}")]
+    public async Task<IEnumerable<PostDto>> GetPostFeed(int userId)
     {
-        return await service.GetPostFeed(spotifyId);
+        return await service.GetPostFeed(userId);
     }
 
     [HttpGet("titles")]
