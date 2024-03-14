@@ -35,7 +35,7 @@ public class PostController : ControllerBase
     [HttpPost]
     public async Task CreatePost(PostCreatePayload postModel)
     {
-        await postService.CreatePost(postModel);
+        await service.CreatePost(postModel);
     }
     
     [HttpGet("titles")]

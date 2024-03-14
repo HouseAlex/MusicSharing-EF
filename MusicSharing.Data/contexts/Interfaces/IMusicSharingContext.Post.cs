@@ -13,8 +13,7 @@ namespace MusicSharing.Data.Contexts.Interfaces
     {
         Task AddPost(Post post);
 
-        Task<Post?> GetPost(int postId);
-        Task CreatePost(Post post);
+        Task<Post?> GetPost(int postId, bool withTracking);
 
         Task<IEnumerable<PostDto>> GetPostFeedForUser(int userId);
 

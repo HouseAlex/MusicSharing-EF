@@ -63,9 +63,9 @@ public class UserService : IUserService
     /// </summary>
     /// <param name="userId">The user identifier.</param>
     /// <returns>The user.</returns>
-    public async Task<UserDto> GetUserFromSpotifyId(int userId)
+    public async Task<UserDto> GetUserFromSpotifyId(string spotifyId)
     {
-        var user = await context.GetUserFromSpotifyId(userId, false);
+        var user = await context.GetUserFromSpotifyId(spotifyId, false);
 
         if (user == null)
         {

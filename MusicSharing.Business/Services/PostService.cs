@@ -24,7 +24,7 @@ namespace MusicSharing.Business.Services
         /// </summary>
         /// <param name="postId">The post identifier.</param>
         /// <returns>The post object.</returns>
-        public async Task<PostDto> GetPost(string postId)
+        public async Task<PostDto> GetPostInformation(string postId)
         {
             return await GetPostInformation(postId);
         }
@@ -32,16 +32,11 @@ namespace MusicSharing.Business.Services
         /// <summary>
         /// Gets the post feed for the user.
         /// </summary>
-        /// <param name="spotifyId"></param>
+        /// <param name="userId">The user identifier.</param>
         /// <returns>A list of posts.</returns>
-        public async Task<IEnumerable<PostDto>> GetPostFeed(string spotifyId)
+        public async Task<IEnumerable<PostDto>> GetPostFeed(int userId)
         {
-            return await context.GetPostFeedForUser(spotifyId);
-        }
-
-        public async Task<PostDto> GetPostInformation(string postId)
-        {
-            throw new NotImplementedException();
+            return await context.GetPostFeedForUser(userId);
         }
 
         public async Task<IEnumerable<string>> GetPostTitles()
@@ -54,7 +49,7 @@ namespace MusicSharing.Business.Services
         public async Task CreatePost(PostCreatePayload payload)
         {
             var newPost = Post.Create(payload.ImageURL, payload.SpotifyId, payload.Title, payload.UserId);
-            await context.CreatePost(newPost);
+            await context.AddPost(newPost);
         }
     }
 }
