@@ -20,7 +20,7 @@ public class PostController : ControllerBase
         this.postService = postService;
     }
 
-    [HttpPost("post")]
+    [HttpPost]
     public async Task CreatePost(PostCreatePayload postModel)
     {
         await postService.CreatePost(postModel);
