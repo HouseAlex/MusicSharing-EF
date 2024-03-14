@@ -38,7 +38,7 @@ namespace MusicSharing.Business.Services
 
         public async Task CreatePost(PostCreatePayload payload)
         {
-            var newPost = Post.Create(payload.SpotifyId, payload.UserId, payload.Title);
+            var newPost = Post.Create(payload.ImageURL, payload.SpotifyId, payload.Title, payload.UserId);
             await context.CreatePost(newPost);
         }
     }

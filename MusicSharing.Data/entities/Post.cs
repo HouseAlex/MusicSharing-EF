@@ -68,27 +68,6 @@ namespace MusicSharing.Data.entities
         private Post() { }
 
         /// <summary>
-        /// Creates a new user entity.
-        /// </summary>
-        /// <param name="name">The user's name.</param>
-        /// <returns>The created user.</returns>
-        public static Post Create(
-            string spotifyId,
-            int userId,
-            string title)
-        {
-            // can add validation here.
-
-            return new Post
-            {
-                IsActive = true,
-                SpotifyId = spotifyId,
-                Title = title,
-                UserId = userId
-            };
-        }
-
-        /// <summary>
         /// Creates a new instance of post.
         /// </summary>
         /// <param name="imageUrl">The image url.</param>

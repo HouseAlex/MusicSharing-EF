@@ -8,8 +8,9 @@ namespace MusicSharing.Contracts.Inputs
 {
     public class PostCreatePayload
     {
+        public string ImageURL { get; } = default!;
         public string SpotifyId { get; } = default!;
-        public int UserId { get; } = default!;
         public string Title { get; } = default!;
+        public int UserId { get; } = default!;
     }
 }
