@@ -16,9 +16,24 @@ namespace MusicSharing.Business.Services
             this.context = context;
         }
 
+        /// <summary>
+        /// Gets the post based on the identifier.
+        /// </summary>
+        /// <param name="postId">The post identifier.</param>
+        /// <returns>The post object.</returns>
         public async Task<PostDto> GetPost(string postId)
         {
             return await GetPostInformation(postId);
+        }
+
+        /// <summary>
+        /// Gets the post feed for the user.
+        /// </summary>
+        /// <param name="spotifyId"></param>
+        /// <returns>A list of posts.</returns>
+        public async Task<IEnumerable<PostDto>> GetPostFeed(string spotifyId)
+        {
+            return await context.GetPostFeedForUser(spotifyId);
         }
 
         public async Task<PostDto> GetPostInformation(string postId)

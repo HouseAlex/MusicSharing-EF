@@ -11,6 +11,8 @@ namespace MusicSharing.Contracts.Outputs
     /// </summary>
     public class PostDto
     {
-        public string user { get; set; } = default!;
+        public string SpotifyId { get; set; } = default!;
+
+        public string userName { get; set; } = default!;
     }
 }

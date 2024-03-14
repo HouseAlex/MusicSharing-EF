@@ -37,7 +37,7 @@ public class UserService : IUserService
     /// <returns>A boolean indicating whethere the user exists.</returns>
     public async Task<bool> CheckUserExists(string spotifyId)
     {
-        var user = await context.GetUserFromSpotifyId(spotifyId);
+        var user = await context.GetUserFromSpotifyId(spotifyId, false);
         
         return user != null;
     }

@@ -11,6 +11,8 @@ namespace MusicSharing.Business.Services.Interfaces
     {
         Task<PostDto> GetPost(string postId);
 
+        Task<IEnumerable<PostDto>> GetPostFeed(string spotifyId);
+
         Task<PostDto> GetPostInformation(string postId);
 
         Task<IEnumerable<string>> GetPostTitles();

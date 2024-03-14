@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MusicSharing.Business.Services;
 using MusicSharing.Business.Services.Interfaces;
+using MusicSharing.Contracts.Outputs;
 
 namespace MusicSharing.API.Controllers;
 
@@ -11,17 +12,28 @@ namespace MusicSharing.API.Controllers;
 [Route("[controller]")]
 public class PostController : ControllerBase
 {
-    private readonly IPostService postService;
+    private readonly IPostService service;
 
-    public PostController(IPostService postService)
+    public PostController(IPostService service)
     {
-        this.postService = postService;
+        this.service = service;
+    }
+
+    /// <summary>
+    /// Asynchronously gets the post feed for the user.
+    /// </summary>
+    /// <param name="spotifyId">The user's spotify identifier.</param>
+    /// <returns>A list of posts</returns>
+    [HttpGet("feed/user/{spotifyId}")]
+    public async Task<IEnumerable<PostDto>> GetPostFeed(string spotifyId)
+    {
+        return await service.GetPostFeed(spotifyId);
     }
 
     [HttpGet("titles")]
     public async Task<ActionResult<IEnumerable<string>>> GetPostTitles()
     {
-        var postTitles = await postService.GetPostTitles();
+        var postTitles = await service.GetPostTitles();
         if (postTitles == null)
         {
             return NotFound();

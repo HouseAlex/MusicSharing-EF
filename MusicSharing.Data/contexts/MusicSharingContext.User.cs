@@ -37,8 +37,10 @@ public partial class MusicSharingContext : IMusicSharingContext
     /// </summary>
     /// <param name="spotifyId">The spotify user identifier.</param>
     /// <returns>The user.</returns>
-    public async Task<User?> GetUserFromSpotifyId(string spotifyId)
+    public async Task<User?> GetUserFromSpotifyId(string spotifyId, bool withTracking)
     {
-        return await Users.FirstOrDefaultAsync(x => x.SpotifyId == spotifyId);
+        return withTracking 
+            ? await Users.AsNoTracking().FirstOrDefaultAsync(x => x.SpotifyId == spotifyId) 
+            : await Users.FirstOrDefaultAsync(x => x.SpotifyId == spotifyId);
     }
 }
