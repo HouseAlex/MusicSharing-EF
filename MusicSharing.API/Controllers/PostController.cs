@@ -14,11 +14,11 @@ namespace MusicSharing.API.Controllers;
 [Route("[controller]")]
 public class PostController : ControllerBase
 {
-    private readonly IPostService service;
+    private readonly IPostService postService;
 
-    public PostController(IPostService service)
+    public PostController(IPostService postService)
     {
-        this.service = service;
+        this.postService = postService;
     }
 
     /// <summary>
@@ -29,19 +29,19 @@ public class PostController : ControllerBase
     [HttpGet("feed/user/{userId}")]
     public async Task<IEnumerable<PostDto>> GetPostFeed(int userId)
     {
-        return await service.GetPostFeed(userId);
+        return await postService.GetPostFeed(userId);
     }
 
     [HttpPost]
     public async Task CreatePost(PostCreatePayload postModel)
     {
-        await service.CreatePost(postModel);
+        await postService.CreatePost(postModel);
     }
     
     [HttpGet("titles")]
     public async Task<ActionResult<IEnumerable<string>>> GetPostTitles()
     {
-        var postTitles = await service.GetPostTitles();
+        var postTitles = await postService.GetPostTitles();
         if (postTitles == null)
         {
             return NotFound();
