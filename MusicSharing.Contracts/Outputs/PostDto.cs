@@ -11,7 +11,17 @@ namespace MusicSharing.Contracts.Outputs
     /// </summary>
     public class PostDto
     {
+        public IEnumerable<CommentDto>? Comments { get; set; }
+
+        public DateTime CreateOn { get; set; }
+
+        public string ImageUrl { get; set; } = default!;
+
         public string SpotifyId { get; set; } = default!;
+
+        public string Title { get; set; } = default!;
+
+        public int userId { get; set; }
 
         public string userName { get; set; } = default!;
     }

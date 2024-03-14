@@ -14,6 +14,8 @@ public interface IUserService
     //Task<MusicSharing.API.Controllers.InstagramPostDto> getPostInformation(string postId);
     Task<UserDto> GetUser(int id);
 
+    Task<UserDto> GetUserFromSpotifyId(string spotifyId);
+
     Task AddUser(NewUserPayload payload);
 
     Task Test();

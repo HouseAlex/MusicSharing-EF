@@ -59,6 +59,23 @@ public class UserService : IUserService
     }
 
     /// <summary>
+    /// Gets the user from the spotify identifier.
+    /// </summary>
+    /// <param name="spotifyId">The spotify identifier.</param>
+    /// <returns>The user.</returns>
+    public async Task<UserDto> GetUserFromSpotifyId(string spotifyId)
+    {
+        var user = await context.GetUserFromSpotifyId(spotifyId, false);
+
+        if (user == null)
+        {
+            throw new Exception();
+        }
+
+        return mapper.Map<UserDto>(user);
+    }
+
+    /// <summary>
     /// Registers a new user for our system.
     /// </summary>
     /// <param name="payload">A payload of the new user user's information.</param>

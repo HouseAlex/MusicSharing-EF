@@ -50,6 +50,14 @@ public partial class MusicSharingContext : IMusicSharingContext
             .ToListAsync();
 
         var posts = await Posts
+            .Where(x => following.Contains(x.UserId))
+            .Include(x => x.Comments)
+            .Include(x => x.User)
+            .Select(x => new PostDto
+            {
+
+            })
+            .ToListAsync();
             
     }
 
