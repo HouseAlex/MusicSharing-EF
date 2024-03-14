@@ -2,6 +2,7 @@
 using MusicSharing.Business.Models;
 using MusicSharing.Business.Services;
 using MusicSharing.Business.Services.Interfaces;
+using MusicSharing.Contracts.Inputs;
 
 namespace MusicSharing.API.Controllers;
 
@@ -20,23 +21,9 @@ public class PostController : ControllerBase
     }
 
     [HttpPost("post")]
-    public async Task<ActionResult> CreatePost(PostCreateModel postModel)
+    public async Task CreatePost(PostCreatePayload postModel)
     {
-        if(!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
-        var result = await postService.CreatePost(postModel);
-
-        if(result)
-        {
-            return StatusCode(201);
-        }
-        else
-        {
-            return StatusCode(500);
-        }
+        await postService.CreatePost(postModel);
     }
     
     [HttpGet("titles")]
