@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MusicSharing.Business.Models;
 using MusicSharing.Business.Services;
 using MusicSharing.Business.Services.Interfaces;
+using MusicSharing.Contracts.Inputs;
 
 namespace MusicSharing.API.Controllers;
 
@@ -18,6 +20,12 @@ public class PostController : ControllerBase
         this.postService = postService;
     }
 
+    [HttpPost]
+    public async Task CreatePost(PostCreatePayload postModel)
+    {
+        await postService.CreatePost(postModel);
+    }
+    
     [HttpGet("titles")]
     public async Task<ActionResult<IEnumerable<string>>> GetPostTitles()
     {
@@ -28,4 +36,5 @@ public class PostController : ControllerBase
         }
         return Ok(postTitles);
     }
+
 }

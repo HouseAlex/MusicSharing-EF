@@ -1,6 +1,9 @@
-﻿using MusicSharing.Business.Services.Interfaces;
+﻿using MusicSharing.Business.Models;
+using MusicSharing.Business.Services.Interfaces;
 using MusicSharing.Contracts.Outputs;
 using MusicSharing.Data.Contexts.Interfaces;
+using MusicSharing.Contracts.Inputs;
+using MusicSharing.Data.entities;
 
 namespace MusicSharing.Business.Services
 {
@@ -31,6 +34,12 @@ namespace MusicSharing.Business.Services
             var postTitles = await context.GetPostTitles();
 
             return postTitles;
+        }
+
+        public async Task CreatePost(PostCreatePayload payload)
+        {
+            var newPost = Post.Create(payload.ImageURL, payload.SpotifyId, payload.Title, payload.UserId);
+            await context.CreatePost(newPost);
         }
     }
 }
