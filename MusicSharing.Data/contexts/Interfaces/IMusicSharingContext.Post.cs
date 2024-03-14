@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MusicSharing.Contracts.Outputs;
 using MusicSharing.Data.entities;
+using MusicSharing.Data.Entities;
 
 namespace MusicSharing.Data.Contexts.Interfaces
 {
@@ -13,6 +14,7 @@ namespace MusicSharing.Data.Contexts.Interfaces
         Task AddPost(Post post);
 
         Task<Post?> GetPost(int postId);
+        Task CreatePost(Post post);
 
         Task<IEnumerable<PostDto>> GetPostFeedForUser(int userId);
 
