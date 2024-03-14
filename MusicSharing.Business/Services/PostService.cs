@@ -1,4 +1,5 @@
-﻿using MusicSharing.Business.Services.Interfaces;
+﻿using MusicSharing.Business.Models;
+using MusicSharing.Business.Services.Interfaces;
 using MusicSharing.Contracts.Outputs;
 using MusicSharing.Data.Contexts.Interfaces;
 
@@ -31,6 +32,28 @@ namespace MusicSharing.Business.Services
             var postTitles = await context.GetPostTitles();
 
             return postTitles;
+        }
+
+        public async Task<bool> CreatePost(PostCreateModel postModel)
+        {
+            try
+            {
+                var postEntity = new Post
+                {
+                    SpotifyId = postModel.SpotifyId,
+                    UserId = postModel.UserId,
+                    Title = postModel.Title,
+                };
+
+                context.Posts.Add(postEntity);
+                await context.SaveChangesAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

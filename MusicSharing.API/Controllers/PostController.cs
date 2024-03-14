@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MusicSharing.Business.Models;
 using MusicSharing.Business.Services;
 using MusicSharing.Business.Services.Interfaces;
 
@@ -18,6 +19,26 @@ public class PostController : ControllerBase
         this.postService = postService;
     }
 
+    [HttpPost("post")]
+    public async Task<ActionResult> CreatePost(PostCreateModel postModel)
+    {
+        if(!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var result = await postService.CreatePost(postModel);
+
+        if(result)
+        {
+            return StatusCode(201);
+        }
+        else
+        {
+            return StatusCode(500);
+        }
+    }
+    
     [HttpGet("titles")]
     public async Task<ActionResult<IEnumerable<string>>> GetPostTitles()
     {
@@ -28,4 +49,5 @@ public class PostController : ControllerBase
         }
         return Ok(postTitles);
     }
+
 }
