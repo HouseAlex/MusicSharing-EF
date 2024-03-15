@@ -1,4 +1,5 @@
 ﻿using MusicSharing.Data.Entities;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MusicSharing.Data.entities
@@ -20,6 +21,7 @@ namespace MusicSharing.Data.entities
         /// <summary>
         /// The post comment identifier.
         /// </summary>
+        [Key]
         public int Id { get; private set; }
 
         /// <summary>
@@ -30,6 +32,7 @@ namespace MusicSharing.Data.entities
         /// <summary>
         /// The post identifier.
         /// </summary>
+        
         public int PostId { get; private set; }
 
         /// <summary>

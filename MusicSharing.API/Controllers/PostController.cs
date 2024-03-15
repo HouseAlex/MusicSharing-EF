@@ -3,6 +3,7 @@ using MusicSharing.Business.Models;
 using MusicSharing.Business.Services;
 using MusicSharing.Business.Services.Interfaces;
 using MusicSharing.Contracts.Inputs;
+using MusicSharing.Contracts.Outputs;
 
 namespace MusicSharing.API.Controllers;
 
@@ -18,6 +19,17 @@ public class PostController : ControllerBase
     public PostController(IPostService postService)
     {
         this.postService = postService;
+    }
+
+    /// <summary>
+    /// Asynchronously gets the post feed for the user.
+    /// </summary>
+    /// <param name="userId">The user identifier.</param>
+    /// <returns>A list of posts</returns>
+    [HttpGet("feed/user/{userId}")]
+    public async Task<IEnumerable<PostDto>> GetPostFeed(int userId)
+    {
+        return await postService.GetPostFeed(userId);
     }
 
     [HttpPost]

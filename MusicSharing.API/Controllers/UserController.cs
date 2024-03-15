@@ -35,6 +35,11 @@ public class UserController : ControllerBase
         return await userService.CheckUserExists(spotifyId);
     }
 
+    public async Task<UserDto> GetUserFromSpotifyId(string spotifyId)
+    {
+        return await userService.GetUserFromSpotifyId(spotifyId);
+    }
+
     /// <summary>
     /// Register a user if they are logining in for the first time
     /// </summary>

@@ -16,5 +16,5 @@ public partial interface IMusicSharingContext
 
     Task<User?> GetUser(int id);
 
-    Task<User?> GetUserFromSpotifyId(string spotifyId);
+    Task<User?> GetUserFromSpotifyId(string spotifyId, bool withTracking);
 }

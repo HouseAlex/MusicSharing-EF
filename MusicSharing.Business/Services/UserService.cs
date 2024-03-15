@@ -37,7 +37,7 @@ public class UserService : IUserService
     /// <returns>A boolean indicating whethere the user exists.</returns>
     public async Task<bool> CheckUserExists(string spotifyId)
     {
-        var user = await context.GetUserFromSpotifyId(spotifyId);
+        var user = await context.GetUserFromSpotifyId(spotifyId, false);
         
         return user != null;
     }
@@ -50,6 +50,23 @@ public class UserService : IUserService
     public async Task<UserDto> GetUser(int id)
     {
         var user = await context.GetUser(id);
+        if (user == null)
+        {
+            throw new Exception();
+        }
+
+        return mapper.Map<UserDto>(user);
+    }
+
+    /// <summary>
+    /// Gets the user from the spotify identifier.
+    /// </summary>
+    /// <param name="userId">The user identifier.</param>
+    /// <returns>The user.</returns>
+    public async Task<UserDto> GetUserFromSpotifyId(string spotifyId)
+    {
+        var user = await context.GetUserFromSpotifyId(spotifyId, false);
+
         if (user == null)
         {
             throw new Exception();
