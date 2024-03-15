@@ -14,6 +14,15 @@ namespace MusicSharing.Data.Contexts;
 public partial class MusicSharingContext : IMusicSharingContext
 {
     /// <summary>
+    /// Allows the ability to add more comments.
+    /// </summary>
+    public async Task AddComment(PostComment comment)
+    {
+        await PostComments.AddAsync(comment);
+        await SaveChangesAsync();
+    }
+
+    /// <summary>
     /// Allows the ability to add more post titles.
     /// </summary>
     public async Task AddPost(Post post)

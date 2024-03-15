@@ -18,5 +18,7 @@ namespace MusicSharing.Business.Services.Interfaces
         Task<IEnumerable<string>> GetPostTitles();
 
         Task CreatePost(PostCreatePayload postModel);
+
+        Task CreateComment(CommentCreatePayload commentModel);
     }
 }

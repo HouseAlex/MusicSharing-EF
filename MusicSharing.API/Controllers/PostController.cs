@@ -32,6 +32,12 @@ public class PostController : ControllerBase
         return await postService.GetPostFeed(userId);
     }
 
+    [HttpPost("{postId: int}/comment")]
+    public async Task CreateComment(CommentCreatePayload commentModel)
+    {
+        await postService.CreateComment(commentModel);
+    }
+
     [HttpPost]
     public async Task CreatePost(PostCreatePayload postModel)
     {
