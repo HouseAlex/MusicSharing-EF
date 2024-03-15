@@ -13,11 +13,19 @@ using MusicSharing.Business.Settings;
 
 namespace MusicSharing.Business.Services
 {
+    /// <summary>
+    /// The Spotify account service.
+    /// </summary>
     public class SpotifyAccountService : ISpotifyAccountService
     {
         private readonly HttpClient _httpClient;
         private readonly SpotifyApiSettings settings;
 
+        /// <summary>
+        /// Retrieves and stores the http client and creates a spotify account service object.
+        /// </summary>
+        /// <param name="httpClient">The http client.</param>
+        /// <param name="spotifyAccountService">The http spotify account service.</param>
         public SpotifyAccountService(HttpClient httpClient, IOptions<SpotifyApiSettings> spotifyApiSettings)
         {
             _httpClient = httpClient;

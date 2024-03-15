@@ -35,6 +35,11 @@ public class UserController : ControllerBase
         return await userService.CheckUserExists(spotifyId);
     }
 
+    /// <summary>
+    /// Gets a user based on their spotify id.
+    /// </summary>
+    /// <param name="spotifyId">The spotify user identifier.</param>
+    /// <returns>The user determined by their spotify id.</returns>
     public async Task<UserDto> GetUserFromSpotifyId(string spotifyId)
     {
         return await userService.GetUserFromSpotifyId(spotifyId);
@@ -68,12 +73,20 @@ public class UserController : ControllerBase
         return await userService.GetUser(id);
     }
 
+    /// <summary>
+    /// Placeholder function to show the process.
+    /// </summary>
+    /// <returns>An emtpy task</returns>
     [HttpGet("TestSpotify")]
     public async Task Test()
     {
         await userService.Test();
     }
 
+    /// <summary>
+    /// Placeholder function to show the process.
+    /// </summary>
+    /// <returns>An emtpy task</returns>
     [HttpPost("info/save")]
     public async Task FrontEndTest()
     {

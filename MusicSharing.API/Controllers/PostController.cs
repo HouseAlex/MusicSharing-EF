@@ -16,6 +16,10 @@ public class PostController : ControllerBase
 {
     private readonly IPostService postService;
 
+    /// <summary>
+    /// The instance of the post controller.
+    /// </summary>
+    /// <param name="postService">The post service</param>
     public PostController(IPostService postService)
     {
         this.postService = postService;
@@ -32,18 +36,30 @@ public class PostController : ControllerBase
         return await postService.GetPostFeed(userId);
     }
 
+    /// <summary>
+    /// Enables the ability to create post comments asynchronously.
+    /// </summary>
+    /// <param name="commentModel">The model in which we create comments.</param>
     [HttpPost("{postId: int}/comment")]
     public async Task CreateComment(CommentCreatePayload commentModel)
     {
         await postService.CreateComment(commentModel);
     }
 
+    /// <summary>
+    /// Enables the ability to generate posts asynchronously.
+    /// </summary>
+    /// <param name="postModel">The model in which we generate posts.</param>
     [HttpPost]
     public async Task CreatePost(PostCreatePayload postModel)
     {
         await postService.CreatePost(postModel);
     }
-    
+
+    /// <summary>
+    /// It retrieves post titles asynchronously.
+    /// </summary>
+    /// <returns>A list with postTitles.</returns>
     [HttpGet("titles")]
     public async Task<ActionResult<IEnumerable<string>>> GetPostTitles()
     {

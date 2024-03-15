@@ -9,16 +9,39 @@ using MusicSharing.Data.Entities;
 
 namespace MusicSharing.Data.Contexts.Interfaces
 {
+    /// <summary>
+    /// A partial interface for the music sharing database context pertaining to posts.
+    /// </summary>
     public partial interface IMusicSharingContext
     {
+        /// <summary>
+        /// Adds a post to the database.
+        /// </summary>
+        /// <param name="post">The post getting added.</param>
         Task AddPost(Post post);
 
+        /// <summary>
+        /// Adds a comment to the database.
+        /// </summary>
+        /// <param name="comment">The comment getting added.</param>
         Task AddComment(PostComment comment);
 
+        /// <summary>
+        /// Gets a post from the database.
+        /// </summary>
+        /// <param name="postId">The id of the post getting added.</param>
+        /// <param name="withTracking">The option to add a post with or without tracking.</param>
         Task<Post?> GetPost(int postId, bool withTracking);
 
+        /// <summary>
+        /// Retrieves the post feed from the database to a user.
+        /// </summary>
+        /// <param name="userId">The id of the user retreiving that post feed.</param>
         Task<IEnumerable<PostDto>> GetPostFeedForUser(int userId);
 
+        /// <summary>
+        /// Retrieves the all the post titles from the database to the user.
+        /// </summary>
         Task<IEnumerable<string>> GetPostTitles();
     }
 }

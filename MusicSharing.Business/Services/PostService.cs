@@ -39,6 +39,10 @@ namespace MusicSharing.Business.Services
             return await context.GetPostFeedForUser(userId);
         }
 
+        /// <summary>
+        /// Grabs all the post titles within our application.
+        /// </summary>
+        /// <returns>A list of postTitles.</returns>
         public async Task<IEnumerable<string>> GetPostTitles()
         {
             var postTitles = await context.GetPostTitles();
@@ -46,12 +50,22 @@ namespace MusicSharing.Business.Services
             return postTitles;
         }
 
+        /// <summary>
+        /// Generates a new post for our application.
+        /// </summary>
+        /// <param name="payload">A payload of the new user user's information.</param>
+        /// <returns>An empty task.</returns>
         public async Task CreatePost(PostCreatePayload payload)
         {
             var newPost = Post.Create(payload.ImageURL, payload.SpotifyId, payload.Title, payload.UserId);
             await context.AddPost(newPost);
         }
 
+        /// <summary>
+        /// Generates a new comment for our application.
+        /// </summary>
+        /// <param name="payload">A payload of the new user user's information.</param>
+        /// <returns>An empty task.</returns>
         public async Task CreateComment(CommentCreatePayload payload)
         {
             var newComment = PostComment.Create(payload.Comment, payload.PostId, payload.UserId);
