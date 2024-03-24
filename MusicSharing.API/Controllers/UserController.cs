@@ -40,6 +40,7 @@ public class UserController : ControllerBase
     /// </summary>
     /// <param name="spotifyId">The spotify user identifier.</param>
     /// <returns>The user determined by their spotify id.</returns>
+    [HttpGet("spotify/{spotifyId}")]
     public async Task<UserDto> GetUserFromSpotifyId(string spotifyId)
     {
         return await userService.GetUserFromSpotifyId(spotifyId);
