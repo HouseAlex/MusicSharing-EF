@@ -9,7 +9,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicSharing.Business", "Mu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicSharing.Data", "MusicSharing.Data\MusicSharing.Data.csproj", "{0FBCD834-27E1-4F4F-9CB6-E06C1D402B65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicSharing.Contracts", "MusicSharing.Contracts\MusicSharing.Contracts.csproj", "{E175D7B9-AC71-4683-ACC1-0C5621E8ABD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicSharing.Contracts", "MusicSharing.Contracts\MusicSharing.Contracts.csproj", "{E175D7B9-AC71-4683-ACC1-0C5621E8ABD4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MusicSharingDB", "MusicSharingDB", "{FD68E8B9-EF87-4993-8AD4-86434B97E803}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{38B4B901-D3AE-4BC2-99AA-65898641F147}"
+	ProjectSection(SolutionItems) = preProject
+		SeedScript.sql = SeedScript.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +43,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{38B4B901-D3AE-4BC2-99AA-65898641F147} = {FD68E8B9-EF87-4993-8AD4-86434B97E803}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {941D5CE6-944D-40E9-B05A-97C528605D6A}
