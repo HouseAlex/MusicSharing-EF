@@ -24,4 +24,8 @@
     <ProjectReference Include="..\MusicSharing.Data\MusicSharing.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Security\" />
+  </ItemGroup>
+
 </Project>

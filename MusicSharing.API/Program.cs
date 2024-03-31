@@ -7,6 +7,7 @@ using MusicSharing.Business.Extensions;
 using MusicSharing.Business.Services;
 using MusicSharing.Business.Services.Interfaces;
 using MusicSharing.Business.Settings;
+using CustomPolicyHandlerExample;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -67,5 +68,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
+app.UseMiddleware<CustomPolicyHandlerMiddleware>();
 app.MapControllers();
 app.Run();
