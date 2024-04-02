@@ -14,16 +14,16 @@ namespace MusicSharing.Contracts.Inputs
         /// <summary>
         /// The comment string.
         /// </summary>
-        public string Comment { get; } = default!;
+        public string Comment { get; set; } = default!;
 
         /// <summary>
         /// The post's identifier.
         /// </summary>
-        public int PostId { get; } = default!;
+        public int PostId { get; set; } = default!;
 
         /// <summary>
         /// The user's identifier.
         /// </summary>
-        public int UserId { get; } = default!;
+        public int UserId { get; set; } = default!;
     }
 }

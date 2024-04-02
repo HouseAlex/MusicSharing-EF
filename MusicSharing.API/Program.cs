@@ -68,6 +68,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
-app.UseMiddleware<CustomPolicyHandlerMiddleware>();
+//app.UseMiddleware<CustomPolicyHandlerMiddleware>();
 app.MapControllers();
 app.Run();

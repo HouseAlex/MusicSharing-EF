@@ -12,23 +12,38 @@ namespace MusicSharing.Contracts.Inputs
     public class PostCreatePayload
     {
         /// <summary>
-        /// The image url identifier.
+        /// The song artist's name.
         /// </summary>
-        public string ImageURL { get; } = default!;
+        public string ArtistName { get; set; } = default!;
+
+        /// <summary>
+        /// The caption of the post.
+        /// </summary>
+        public string Caption { get; set; } = default!;
+
+        /// <summary>
+        /// The image url.
+        /// </summary>
+        public string ImageUrl { get; set; } = default!;
 
         /// <summary>
         /// The spotify user identifier.
         /// </summary>
-        public string SpotifyId { get; } = default!;
+        public string SpotifyId { get; set; } = default!;
 
         /// <summary>
-        /// The title of the post.
+        /// The spotify url.
         /// </summary>
-        public string Title { get; } = default!;
+        public string SpotifyUrl { get; set; } = default!;
+
+        /// <summary>
+        /// The track's name.
+        /// </summary>
+        public string TrackName { get; set; } = default!;
 
         /// <summary>
         /// The user's identifier.
         /// </summary>
-        public int UserId { get; } = default!;
+        public int UserId { get; set; } = default!;
     }
 }
