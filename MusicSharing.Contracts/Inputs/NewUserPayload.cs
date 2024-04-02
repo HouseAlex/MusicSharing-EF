@@ -14,11 +14,11 @@ namespace MusicSharing.Contracts.Inputs
         /// <summary>
         /// The user's name
         /// </summary>
-        public string DisplayName { get; } = default!;
+        public string DisplayName { get; set; } = default!;
 
         /// <summary>
         /// The spotify user identifier.
         /// </summary>
-        public string SpotifyId { get; } = default!;
+        public string SpotifyId { get; set; } = default!;
     }
 }

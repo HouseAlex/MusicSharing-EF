@@ -27,13 +27,6 @@ CREATE TABLE [musicsharing].[user] (
     IsActive        Bit             NOT NULL,
     CONSTRAINT PK_USER PRIMARY KEY (Id)
 )
-
-SET IDENTITY_INSERT [musicsharing].[user] ON
-
-INSERT INTO [musicsharing].[user] (Id, SpotifyId, Name, IsActive)
-VALUES (1, 'House_Alex', 'Alex', 1)
-
-SET IDENTITY_INSERT [musicsharing].[user] OFF
 GO
 
 /*--------------- Follow Table -------------*/
@@ -51,10 +44,12 @@ GO
 /*--------------- Post Table -------------*/
 CREATE TABLE [musicsharing].[post] (
     Id              INT             IDENTITY (1, 1) NOT NULL,
+    ArtistName      NVARCHAR(100)   NOT NULL,
+    Caption         NVARCHAR(100)   NOT NULL,
     SpotifyId       NVARCHAR(100)   NOT NULL,
     SpotifyUrl      NVARCHAR(1000)  NOT NULL,
     ImageUrl        NVARCHAR(1000)  NOT NULL,
-    Title           NVARCHAR(100)   NOT NULL,
+    TrackName       NVARCHAR(100)   NOT NULL,
     UserId          INT             NOT NULL,
     IsActive        BIT             NOT NULL,
     CreatedOn        DATETIME        NOT NULL,

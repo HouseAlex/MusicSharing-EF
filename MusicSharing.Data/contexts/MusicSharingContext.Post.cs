@@ -70,13 +70,15 @@ public partial class MusicSharingContext : IMusicSharingContext
                     UserId = c.UserId,
                     UserName = c.User!.Name
                 }).OrderByDescending(x => x.CreatedOn) : null,
+                ArtistName = x.ArtistName,
+                Caption = x.Caption,
                 CreatedOn = x.CreatedOn,
                 ImageUrl = x.ImageUrl,
                 SpotifyId = x.SpotifyId,
                 SpotifyUrl = x.SpotifyUrl,
-                Title = x.Title,
-                userId = x.UserId,
-                userName = x.User!.Name
+                TrackName = x.TrackName,
+                UserId = x.UserId,
+                UserName = x.User!.Name
             })
             .OrderByDescending(x => x.CreatedOn)
             .Take(30)   // Hard coded to only retrieve 30 most recent posts for now. Can be changed to dynamic pagination later.
@@ -93,7 +95,7 @@ public partial class MusicSharingContext : IMusicSharingContext
     public async Task<IEnumerable<string>> GetPostTitles()
     {
         return await Posts
-                .Select(p => p.Title)
+                .Select(p => p.Caption)
                 .ToListAsync();
     }
 }

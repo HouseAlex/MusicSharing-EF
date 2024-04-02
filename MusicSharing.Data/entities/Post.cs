@@ -11,6 +11,16 @@ namespace MusicSharing.Data.entities
     public class Post
     {
         /// <summary>
+        /// The song artist's name.
+        /// </summary>
+        public string ArtistName { get; private set; } = default!;
+
+        /// <summary>
+        /// The post title
+        /// </summary>
+        public string Caption { get; private set; } = default!;
+
+        /// <summary>
         /// The post comments.
         /// </summary>
         [InverseProperty("PostId")]
@@ -56,9 +66,9 @@ namespace MusicSharing.Data.entities
         public string SpotifyUrl { get; private set; } = default!;
 
         /// <summary>
-        /// The post title
+        /// The track name.
         /// </summary>
-        public string Title { get; private set; } = default!;
+        public string TrackName { get; private set; } = default!;
 
         /// <summary>
         /// The user identifer of the post creator
@@ -78,18 +88,29 @@ namespace MusicSharing.Data.entities
         /// </summary>
         /// <param name="imageUrl">The image url.</param>
         /// <param name="spotifyId">The spotify object identifier.</param>
-        /// <param name="title">The post title.</param>
+        /// <param name="trackName">The track name.</param>
         /// <param name="userId">The user identifier.</param>
         /// <returns>The created post object.</returns>
-        public static Post Create(string imageUrl, string spotifyId, string title, int userId)
+        public static Post Create(
+            string artistName,
+            string caption,
+            string imageUrl, 
+            string spotifyId,
+            string spotifyUrl,
+            string trackName, 
+            int userId)
+
         {
             return new Post
             {
+                ArtistName = artistName,
+                Caption = caption,
                 CreatedOn = DateTime.Now,
                 ImageUrl = imageUrl,
                 IsActive = true,
                 SpotifyId = spotifyId,
-                Title = title,
+                SpotifyUrl = spotifyUrl,
+                TrackName = trackName,
                 UserId = userId
             };
         }
@@ -105,7 +126,7 @@ namespace MusicSharing.Data.entities
                 throw new ArgumentNullException(nameof(title));
             }
 
-            this.Title = title;
+            this.Caption = title;
         }
 
         /// <summary>
