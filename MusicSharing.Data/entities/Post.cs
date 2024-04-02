@@ -13,7 +13,7 @@ namespace MusicSharing.Data.entities
         /// <summary>
         /// The song artist's name.
         /// </summary>
-        public string ArtistName { get; set; } = default!;
+        public string ArtistName { get; private set; } = default!;
 
         /// <summary>
         /// The post title

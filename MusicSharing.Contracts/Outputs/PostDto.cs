@@ -12,6 +12,16 @@ namespace MusicSharing.Contracts.Outputs
     public class PostDto
     {
         /// <summary>
+        /// The song artist's name.
+        /// </summary>
+        public string ArtistName { get; set; } = default!;
+
+        /// <summary>
+        /// The post title
+        /// </summary>
+        public string Caption { get; set; } = default!;
+
+        /// <summary>
         /// The comment on the post.
         /// </summary>v
         public IEnumerable<CommentDto>? Comments { get; set; }
@@ -37,19 +47,19 @@ namespace MusicSharing.Contracts.Outputs
         public string SpotifyUrl { get; set; } = default!;
 
         /// <summary>
-        /// The title of the post.
+        /// The track name of the post.
         /// </summary>
-        public string Title { get; set; } = default!;
+        public string TrackName { get; set; } = default!;
 
 
         /// <summary>
         /// The user's identifier.
         /// </summary>
-        public int userId { get; set; }
+        public int UserId { get; set; }
 
         /// <summary>
         /// The name of the user.
         /// </summary>
-        public string userName { get; set; } = default!;
+        public string UserName { get; set; } = default!;
     }
 }
