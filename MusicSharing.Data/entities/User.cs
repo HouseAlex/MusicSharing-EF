@@ -14,7 +14,6 @@ public class User
     /// <summary>
     /// The user identifier.
     /// </summary>
-    [Key]
     public int Id { get; private set; }
 
     /// <summary>

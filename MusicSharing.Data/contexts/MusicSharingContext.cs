@@ -18,13 +18,13 @@ public partial class MusicSharingContext : DbContext, IMusicSharingContext
 {
     public DbSet<Follow> Follows { get; set; } = default!;
 
-    public DbSet<Post> Posts { get; set; } = default!;
+    public DbSet<Post> Posts { get; set; }
 
     public DbSet<PostComment> PostComments { get; set; } = default!;
 
     public DbSet<PostLike> PostLikes { get; set; } = default!;
 
-    public DbSet<User> Users { get; set; } = default!;
+    public DbSet<User> Users { get; set; }
 
 
     /// <summary>
@@ -42,5 +42,17 @@ public partial class MusicSharingContext : DbContext, IMusicSharingContext
     public async Task SaveChangesAsync()
     {
         await base.SaveChangesAsync();
+    }
+
+    // Override OnModelCreating
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.HasDefaultSchema("musicsharing");
+
+        // Configure primary key for User entity
+        modelBuilder.Entity<User>(entity =>
+        {
+            entity.ToTable("users");
+        });
     }
 }

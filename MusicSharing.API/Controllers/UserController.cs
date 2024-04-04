@@ -36,6 +36,17 @@ public class UserController : ControllerBase
     }
 
     /// <summary>
+    /// Attempts to follow the user of the name provided.
+    /// </summary>
+    /// <param name="payload">The follow payload.</param>
+    /// <returns>An empty task.</returns>
+    [HttpPost("follower")]
+    public async Task FollowUser([FromBody] FollowPayload payload)
+    {
+        await userService.FollowUser(payload);
+    }
+
+    /// <summary>
     /// Gets a user based on their spotify id.
     /// </summary>
     /// <param name="spotifyId">The spotify user identifier.</param>
