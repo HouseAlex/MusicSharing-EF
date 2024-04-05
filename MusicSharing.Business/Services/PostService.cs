@@ -78,5 +78,31 @@ namespace MusicSharing.Business.Services
             var newComment = PostComment.Create(payload.Comment, payload.PostId, payload.UserId);
             await context.AddComment(newComment);
         }
+
+        /// <summary>
+        /// Lets a user like/unlike a post.
+        /// </summary>
+        /// <param name="postId">The post identifier.</param>
+        /// <param name="userId">The user identifier.</param>
+        /// <param name="isLiked">A value indicating if the user has </param>
+        /// <returns>A boolean indicating liked.</returns>
+        public async Task<bool> LikePost(int postId, int userId, bool isLiked)
+        {
+            if (isLiked)
+            {
+                var postLike = PostLike.Create(postId, userId);
+                await context.AddPostLike(postLike);
+
+                return true;
+            }
+            else
+            {
+                var postLike = await context.GetPostLike(postId, userId) ?? throw new Exception("Unable to find post like object.");
+                postLike.Delete();
+                await context.SaveChangesAsync();
+
+                return false;
+            }
+        }
     }
 }

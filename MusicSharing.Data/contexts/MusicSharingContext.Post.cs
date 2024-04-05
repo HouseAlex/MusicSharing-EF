@@ -32,6 +32,16 @@ public partial class MusicSharingContext : IMusicSharingContext
     }
 
     /// <summary>
+    /// Adds a post like to the database.
+    /// </summary>
+    /// <param name="postLike">The post like object.</param>
+    public async Task AddPostLike(PostLike postLike)
+    {
+        await PostLikes.AddAsync(postLike);
+        await SaveChangesAsync();
+    }
+
+    /// <summary>
     /// Allows the ability to remove post titles.
     /// </summary>
     public async Task<Post?> GetPost(int postId, bool withTracking)
@@ -39,6 +49,17 @@ public partial class MusicSharingContext : IMusicSharingContext
         return withTracking 
             ? await Posts.FirstOrDefaultAsync(x => x.Id == postId) 
             : await Posts.AsNoTracking().FirstOrDefaultAsync(x => x.Id == postId);
+    }
+
+    /// <summary>
+    /// Gets the post like object.
+    /// </summary>
+    /// <param name="postId">The post identifier.</param>
+    /// <param name="userId">The user identifier.</param>
+    /// <returns>The post like object.</returns>
+    public async Task<PostLike?> GetPostLike(int postId, int userId)
+    {
+        return await PostLikes.FirstOrDefaultAsync(x => x.PostId == postId && x.UserId == userId && x.IsActive);
     }
 
     /// <summary>
@@ -60,12 +81,13 @@ public partial class MusicSharingContext : IMusicSharingContext
         var posts = await Posts
             .Where(x => x.IsActive)
             .Where(x => following.Contains(x.UserId))
-            .Include(x => x.Comments)
+            .Include(x => x.Comments.Where(c => c.IsActive))
                 .ThenInclude(t => t.User)
             .Include(x => x.User)
+            .Include(x => x.Likes.Where(l => l.IsActive))
             .Select(x => new PostDto
             {
-                Comments = x.Comments != null ? x.Comments.Select(c => new CommentDto
+                Comments = x.Comments != null ? x.Comments.Where(c => c.IsActive).Select(c => new CommentDto
                 {
                     CommentId = c.Id,
                     Comment = c.Comment,
@@ -77,11 +99,13 @@ public partial class MusicSharingContext : IMusicSharingContext
                 Caption = x.Caption,
                 CreatedOn = x.CreatedOn,
                 ImageUrl = x.ImageUrl,
+                LikeTotal = x.Likes.Where(c => c.IsActive) != null ? x.Likes.Where(c => c.IsActive).Count() : 0,
+                IsLikedByUser = x.Likes != null ?  x.Likes.Any(x => x.UserId == userId && x.IsActive) : false,
                 SpotifyId = x.SpotifyId,
                 SpotifyUrl = x.SpotifyUrl,
                 TrackName = x.TrackName,
                 UserId = x.UserId,
-                UserName = x.User!.Name
+                UserName = x.User.Name
             })
             .OrderByDescending(x => x.CreatedOn)
             .Take(30)   // Hard coded to only retrieve 30 most recent posts for now. Can be changed to dynamic pagination later.
