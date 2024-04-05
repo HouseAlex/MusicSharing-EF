@@ -52,6 +52,9 @@ public partial class MusicSharingContext : IMusicSharingContext
             .Where(x => x.UserId == userId && x.IsActive)
             .Select(x => x.FollowId)
             .ToListAsync();
+
+        // add user to list of posts wanted.
+        following.Add(userId);
         
         #nullable disable
         var posts = await Posts
