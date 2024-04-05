@@ -40,7 +40,7 @@ public class PostController : ControllerBase
     /// Enables the ability to create post comments asynchronously.
     /// </summary>
     /// <param name="commentModel">The model in which we create comments.</param>
-    [HttpPost("{postId}/comment")]
+    [HttpPost("comment")]
     public async Task CreateComment(CommentCreatePayload commentModel)
     {
         await postService.CreateComment(commentModel);
