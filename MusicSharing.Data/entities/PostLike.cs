@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MusicSharing.Data.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -29,9 +30,19 @@ namespace MusicSharing.Data.entities
         public int PostId { get; private set; }
 
         /// <summary>
+        /// The post object.
+        /// </summary>
+        public virtual Post Post { get; private set; } = default!;
+
+        /// <summary>
         /// The identifier of user that liked the post.
         /// </summary>
         public int UserId { get; private set; }
+
+        /// <summary>
+        /// The user.
+        /// </summary>
+        public virtual User User { get; private set; } = default!;
 
         private PostLike() { }
 

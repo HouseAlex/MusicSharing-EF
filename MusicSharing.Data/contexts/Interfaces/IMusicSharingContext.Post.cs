@@ -27,11 +27,25 @@ namespace MusicSharing.Data.Contexts.Interfaces
         Task AddComment(PostComment comment);
 
         /// <summary>
+        /// Adds a post like to the database.
+        /// </summary>
+        /// <param name="postLike">The post like object.</param>
+        Task AddPostLike(PostLike postLike);
+
+        /// <summary>
         /// Gets a post from the database.
         /// </summary>
         /// <param name="postId">The id of the post getting added.</param>
         /// <param name="withTracking">The option to add a post with or without tracking.</param>
         Task<Post?> GetPost(int postId, bool withTracking);
+
+        /// <summary>
+        /// Gets the post like object.
+        /// </summary>
+        /// <param name="postId">The post identifier.</param>
+        /// <param name="userId">The user identifier.</param>
+        /// <returns>The post like object.</returns>
+        Task<PostLike?> GetPostLike(int postId, int userId);
 
         /// <summary>
         /// Retrieves the post feed from the database to a user.

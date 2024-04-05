@@ -45,12 +45,12 @@ namespace MusicSharing.Data.entities
         /// </summary>
         public int UserId { get; private set; }
 
-        
+
         /// <summary>
         /// The user.
         /// </summary>
         [ForeignKey("UserId")]
-        public virtual User? User { get; private set; }
+        public virtual User User { get; private set; } = default!;
 
         private PostComment() { }
 

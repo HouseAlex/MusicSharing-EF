@@ -40,7 +40,7 @@ public class PostController : ControllerBase
     /// Enables the ability to create post comments asynchronously.
     /// </summary>
     /// <param name="commentModel">The model in which we create comments.</param>
-    [HttpPost("{postId}/comment")]
+    [HttpPost("comment")]
     public async Task CreateComment(CommentCreatePayload commentModel)
     {
         await postService.CreateComment(commentModel);
@@ -69,6 +69,19 @@ public class PostController : ControllerBase
             return NotFound();
         }
         return Ok(postTitles);
+    }
+
+    /// <summary>
+    /// Lets a user like/unlike a post.
+    /// </summary>
+    /// <param name="postId">The post identifier.</param>
+    /// <param name="userId">The user identifier.</param>
+    /// <param name="isLiked">A value indicating if the user has </param>
+    /// <returns>A boolean indicating liked.</returns>
+    [HttpGet("{postId}/user/{userId}/like/{isLiked}")]
+    public async Task<bool> LikePost(int postId, int userId, bool isLiked)
+    {
+        return await postService.LikePost(postId, userId, isLiked);
     }
 
 }

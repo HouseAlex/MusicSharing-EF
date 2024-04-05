@@ -42,5 +42,14 @@ namespace MusicSharing.Business.Services.Interfaces
         /// </summary>
         /// <param name="commentModel">The model in which we create comments.</param>
         Task CreateComment(CommentCreatePayload commentModel);
+
+        /// <summary>
+        /// Lets a user like/unlike a post.
+        /// </summary>
+        /// <param name="postId">The post identifier.</param>
+        /// <param name="userId">The user identifier.</param>
+        /// <param name="isLiked">A value indicating if the user has </param>
+        /// <returns>A boolean indicating liked.</returns>
+        Task<bool> LikePost(int postId, int userId, bool isLiked);
     }
 }

@@ -37,6 +37,16 @@ namespace MusicSharing.Contracts.Outputs
         public string ImageUrl { get; set; } = default!;
 
         /// <summary>
+        /// Gets the like total.
+        /// </summary>
+        public int LikeTotal { get; set; }
+
+        /// <summary>
+        /// Gets a value indicating if the user has liked the post.
+        /// </summary>
+        public bool IsLikedByUser { get; set; }
+
+        /// <summary>
         /// The spotify user identifier.
         /// </summary>
         public string SpotifyId { get; set; } = default!;

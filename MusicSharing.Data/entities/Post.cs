@@ -23,7 +23,7 @@ namespace MusicSharing.Data.entities
         /// <summary>
         /// The post comments.
         /// </summary>
-        public virtual ICollection<PostComment>? Comments { get; private set; }  // I forget how this is implemented fully might need to scratch this idea. but will research 
+        public virtual ICollection<PostComment>? Comments { get; private set; }  
 
         /// <summary>
         /// The date the post was created on.
@@ -45,6 +45,11 @@ namespace MusicSharing.Data.entities
         /// A boolean that indicates whether the post is active or not.
         /// </summary>
         public bool IsActive { get; private set; }
+
+        /// <summary>
+        /// The post likes.
+        /// </summary>
+        public virtual ICollection<PostLike>? Likes { get; private set; }
 
 
         /*
