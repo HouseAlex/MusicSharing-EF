@@ -36,10 +36,16 @@ namespace MusicSharing.Data.entities
         public int PostId { get; private set; }
 
         /// <summary>
+        /// The post object.
+        /// </summary>
+        public virtual Post Post { get; private set; } = default!;
+
+        /// <summary>
         /// The user identifier of the commenter.
         /// </summary>
         public int UserId { get; private set; }
 
+        
         /// <summary>
         /// The user.
         /// </summary>

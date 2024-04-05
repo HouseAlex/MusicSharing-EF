@@ -23,8 +23,7 @@ namespace MusicSharing.Data.entities
         /// <summary>
         /// The post comments.
         /// </summary>
-        [InverseProperty("PostId")]
-        public virtual ICollection<PostComment>? Comments { get; private set; }  // I forget how this is implemented fully might need to scratch this idea. but will research
+        public virtual ICollection<PostComment>? Comments { get; private set; }  // I forget how this is implemented fully might need to scratch this idea. but will research 
 
         /// <summary>
         /// The date the post was created on.
@@ -75,6 +74,7 @@ namespace MusicSharing.Data.entities
         /// </summary>
         public int UserId { get; private set; }
 
+        
         /// <summary>
         /// The user.
         /// </summary>

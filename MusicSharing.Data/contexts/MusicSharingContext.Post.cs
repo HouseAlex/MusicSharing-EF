@@ -52,7 +52,7 @@ public partial class MusicSharingContext : IMusicSharingContext
             .Where(x => x.UserId == userId && x.IsActive)
             .Select(x => x.FollowId)
             .ToListAsync();
-
+        
         #nullable disable
         var posts = await Posts
             .Where(x => x.IsActive)
@@ -69,7 +69,7 @@ public partial class MusicSharingContext : IMusicSharingContext
                     CreatedOn = c.CreatedOn,
                     UserId = c.UserId,
                     UserName = c.User!.Name
-                }).OrderByDescending(x => x.CreatedOn) : null,
+                }).OrderByDescending(x => x.CreatedOn).ToList() : null,
                 ArtistName = x.ArtistName,
                 Caption = x.Caption,
                 CreatedOn = x.CreatedOn,

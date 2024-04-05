@@ -49,10 +49,34 @@ public partial class MusicSharingContext : DbContext, IMusicSharingContext
     {
         modelBuilder.HasDefaultSchema("musicsharing");
 
-        // Configure primary key for User entity
+        modelBuilder.Entity<Follow>(entity =>
+        {
+            entity.ToTable("follow");
+            entity.Property(p => p.Id).ValueGeneratedOnAdd();
+        });
+
+        modelBuilder.Entity<Post>(entity =>
+        {
+            entity.ToTable("post");
+            entity.Property(p => p.Id).ValueGeneratedOnAdd();
+        });
+
+        modelBuilder.Entity<PostComment>(entity =>
+        {
+            entity.ToTable("postcomment");
+            entity.Property(p => p.Id).ValueGeneratedOnAdd();
+        });
+
+        modelBuilder.Entity<PostLike>(entity =>
+        {
+            entity.ToTable("postlike");
+            entity.Property(p => p.Id).ValueGeneratedOnAdd();
+        });
+
         modelBuilder.Entity<User>(entity =>
         {
-            entity.ToTable("users");
+            entity.ToTable("user");
+            entity.Property(p => p.Id).ValueGeneratedOnAdd();
         });
     }
 }
