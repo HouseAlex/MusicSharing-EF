@@ -8,13 +8,11 @@ using System.Threading.Tasks;
 
 namespace MusicSharing.Data.Entities;
 
-[Table("user", Schema = "musicsharing")]
 public class User
 {
     /// <summary>
     /// The user identifier.
     /// </summary>
-    [Key]
     public int Id { get; private set; }
 
     /// <summary>

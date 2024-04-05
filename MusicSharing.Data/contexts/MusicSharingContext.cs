@@ -18,13 +18,13 @@ public partial class MusicSharingContext : DbContext, IMusicSharingContext
 {
     public DbSet<Follow> Follows { get; set; } = default!;
 
-    public DbSet<Post> Posts { get; set; } = default!;
+    public DbSet<Post> Posts { get; set; }
 
     public DbSet<PostComment> PostComments { get; set; } = default!;
 
     public DbSet<PostLike> PostLikes { get; set; } = default!;
 
-    public DbSet<User> Users { get; set; } = default!;
+    public DbSet<User> Users { get; set; }
 
 
     /// <summary>
@@ -42,5 +42,41 @@ public partial class MusicSharingContext : DbContext, IMusicSharingContext
     public async Task SaveChangesAsync()
     {
         await base.SaveChangesAsync();
+    }
+
+    // Override OnModelCreating
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.HasDefaultSchema("musicsharing");
+
+        modelBuilder.Entity<Follow>(entity =>
+        {
+            entity.ToTable("follow");
+            entity.Property(p => p.Id).ValueGeneratedOnAdd();
+        });
+
+        modelBuilder.Entity<Post>(entity =>
+        {
+            entity.ToTable("post");
+            entity.Property(p => p.Id).ValueGeneratedOnAdd();
+        });
+
+        modelBuilder.Entity<PostComment>(entity =>
+        {
+            entity.ToTable("postcomment");
+            entity.Property(p => p.Id).ValueGeneratedOnAdd();
+        });
+
+        modelBuilder.Entity<PostLike>(entity =>
+        {
+            entity.ToTable("postlike");
+            entity.Property(p => p.Id).ValueGeneratedOnAdd();
+        });
+
+        modelBuilder.Entity<User>(entity =>
+        {
+            entity.ToTable("user");
+            entity.Property(p => p.Id).ValueGeneratedOnAdd();
+        });
     }
 }

@@ -1,4 +1,5 @@
-﻿using MusicSharing.Data.Entities;
+﻿using MusicSharing.Data.entities;
+using MusicSharing.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,12 @@ public partial interface IMusicSharingContext
     /// </summary>
     /// <param name="user">The user that is getting added.</param>
     Task AddUser(User user);
+
+    /// <summary>
+    /// Adds a follow object to the database.
+    /// </summary>
+    /// <param name="follow">The follow object.</param>
+    Task AddFollow(Follow follow);
 
     /// <summary>
     /// Gets user information based on an id.

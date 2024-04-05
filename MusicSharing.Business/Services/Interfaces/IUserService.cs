@@ -16,7 +16,12 @@ public interface IUserService
     /// <returns>A boolean indicating whethere the user exists.</returns>
     Task<bool> CheckUserExists(string spotifyId);
 
-    //Task<MusicSharing.API.Controllers.InstagramPostDto> getPostInformation(string postId);
+    /// <summary>
+    /// Attempts to follow the user of the provided name.
+    /// </summary>
+    /// <param name="payload">The folow payload</param>
+    /// <returns>An empty task.</returns>
+    Task FollowUser(FollowPayload payload);
 
     /// <summary>
     /// Retrieves a user based on their spotify id

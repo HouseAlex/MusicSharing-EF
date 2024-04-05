@@ -53,6 +53,9 @@ public partial class MusicSharingContext : IMusicSharingContext
             .Select(x => x.FollowId)
             .ToListAsync();
 
+        // add user to list of posts wanted.
+        following.Add(userId);
+        
         #nullable disable
         var posts = await Posts
             .Where(x => x.IsActive)
@@ -69,7 +72,7 @@ public partial class MusicSharingContext : IMusicSharingContext
                     CreatedOn = c.CreatedOn,
                     UserId = c.UserId,
                     UserName = c.User!.Name
-                }).OrderByDescending(x => x.CreatedOn) : null,
+                }).OrderByDescending(x => x.CreatedOn).ToList() : null,
                 ArtistName = x.ArtistName,
                 Caption = x.Caption,
                 CreatedOn = x.CreatedOn,

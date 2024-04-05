@@ -22,6 +22,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IPostService, PostService>();
+builder.Services.AddScoped<ISpotifyService, SpotifyService>();
+builder.Services.AddScoped<ISpotifyAccountService, SpotifyAccountService>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
