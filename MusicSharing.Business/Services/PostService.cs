@@ -55,7 +55,7 @@ namespace MusicSharing.Business.Services
         /// </summary>
         /// <param name="payload">A payload of the new user user's information.</param>
         /// <returns>An empty task.</returns>
-        public async Task CreatePost(PostCreatePayload payload)
+        public async Task<PostDto> CreatePost(PostCreatePayload payload)
         {
             var newPost = Post.Create(
                 payload.ArtistName,
@@ -65,7 +65,25 @@ namespace MusicSharing.Business.Services
                 payload.SpotifyUrl,
                 payload.TrackName,
                 payload.UserId);
-            await context.AddPost(newPost);
+
+            var obj = await context.AddPost(newPost) ?? throw new Exception();
+
+            return new PostDto
+            {
+                ArtistName = obj.ArtistName,
+                Caption = obj.Caption,
+                CreatedOn = obj.CreatedOn,
+                Comments = null,
+                Id = obj.Id,
+                ImageUrl = obj.ImageUrl,
+                IsLikedByUser = false,
+                LikeTotal = 0,
+                SpotifyId = obj.SpotifyId,
+                SpotifyUrl = obj.SpotifyUrl,
+                TrackName = obj.TrackName,
+                UserId = obj.UserId,
+                UserName = obj.User!.Name
+            };
         }
 
         /// <summary>

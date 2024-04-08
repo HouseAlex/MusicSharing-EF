@@ -32,6 +32,11 @@ namespace MusicSharing.Contracts.Outputs
         public DateTime CreatedOn { get; set; }
 
         /// <summary>
+        /// The post identifier.
+        /// </summary>
+        public int Id { get; set; }
+
+        /// <summary>
         /// The image url identifier.
         /// </summary>v
         public string ImageUrl { get; set; } = default!;
