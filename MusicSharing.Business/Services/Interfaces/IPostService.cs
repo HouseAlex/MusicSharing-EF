@@ -35,7 +35,7 @@ namespace MusicSharing.Business.Services.Interfaces
         /// Enables the ability to generate posts asynchronously.
         /// </summary>
         /// <param name="postModel">The model in which we generate posts.</param>
-        Task CreatePost(PostCreatePayload postModel);
+        Task<PostDto> CreatePost(PostCreatePayload postModel);
 
         /// <summary>
         /// Enables the ability to create post comments asynchronously.

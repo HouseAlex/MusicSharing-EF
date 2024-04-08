@@ -25,10 +25,16 @@ public partial class MusicSharingContext : IMusicSharingContext
     /// <summary>
     /// Allows the ability to add more post titles.
     /// </summary>
-    public async Task AddPost(Post post)
+    public async Task<Post?> AddPost(Post post)
     {
         await Posts.AddAsync(post);
         await SaveChangesAsync();
+
+        var obj = await Posts
+            .Include(x => x.User)
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x => x.Id == post.Id);
+        return obj;
     }
 
     /// <summary>
@@ -98,6 +104,7 @@ public partial class MusicSharingContext : IMusicSharingContext
                 ArtistName = x.ArtistName,
                 Caption = x.Caption,
                 CreatedOn = x.CreatedOn,
+                Id = x.Id,
                 ImageUrl = x.ImageUrl,
                 LikeTotal = x.Likes.Where(c => c.IsActive) != null ? x.Likes.Where(c => c.IsActive).Count() : 0,
                 IsLikedByUser = x.Likes != null ?  x.Likes.Any(x => x.UserId == userId && x.IsActive) : false,

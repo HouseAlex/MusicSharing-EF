@@ -18,7 +18,7 @@ namespace MusicSharing.Data.Contexts.Interfaces
         /// Adds a post to the database.
         /// </summary>
         /// <param name="post">The post getting added.</param>
-        Task AddPost(Post post);
+        Task<Post?> AddPost(Post post);
 
         /// <summary>
         /// Adds a comment to the database.

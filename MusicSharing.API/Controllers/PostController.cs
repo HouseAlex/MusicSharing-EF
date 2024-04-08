@@ -50,10 +50,11 @@ public class PostController : ControllerBase
     /// Enables the ability to generate posts asynchronously.
     /// </summary>
     /// <param name="postModel">The model in which we generate posts.</param>
+    /// <returns>The created post.</returns>
     [HttpPost]
-    public async Task CreatePost(PostCreatePayload postModel)
+    public async Task<PostDto> CreatePost(PostCreatePayload postModel)
     {
-        await postService.CreatePost(postModel);
+        return await postService.CreatePost(postModel);
     }
 
     /// <summary>
